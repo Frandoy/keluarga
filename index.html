@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Servis Kendaraan — Keluarga Imam</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:#EFF6FF;--blue-mid:#BFDBFE;
+  --teal:#059669;--teal-light:#ECFDF5;
+  --amber:#D97706;--amber-light:#FFFBEB;
+  --red:#DC2626;--red-light:#FEF2F2;
+  --purple:#7C3AED;--purple-light:#F5F3FF;
+  --bg:#F1F5F9;--surface:#FFFFFF;
+  --border:#E2E8F0;--border-dark:#CBD5E1;
+  --text-1:#0F172A;--text-2:#475569;--text-3:#94A3B8;--text-4:#CBD5E1;
+  --nav-h:60px;--side-w:240px;
+  --r:10px;--r-sm:6px;--r-lg:16px;
+  --shadow-xs:0 1px 2px rgba(0,0,0,.05);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg:0 10px 15px rgba(0,0,0,.08),0 4px 6px rgba(0,0,0,.04);
+  --shadow-xl:0 20px 25px rgba(0,0,0,.1),0 8px 10px rgba(0,0,0,.04);
+  --t:.18s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text-1);line-height:1.5}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:inherit}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ── SCREENS ── */
+.scr{min-height:100vh}
+.scr.hidden{display:none!important}
+
+/* ── LOGIN ── */
+.login-wrap{display:grid;grid-template-columns:1.1fr .9fr;min-height:100vh}
+.login-left{position:relative;overflow:hidden;background:linear-gradient(135deg,#1e3a8a 0%,#2563EB 40%,#059669 100%)}
+.login-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.2;mix-blend-mode:luminosity}
+.login-left-inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:48px}
+.login-logo{display:flex;align-items:center;gap:10px}
+.login-logo-icon{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.login-logo-text{font-size:18px;font-weight:700;color:white;letter-spacing:-.3px}
+.login-hero-text{color:white}
+.login-hero-text h1{font-size:clamp(32px,3.5vw,48px);font-weight:800;line-height:1.15;letter-spacing:-.5px;margin-bottom:16px}
+.login-hero-text h1 span{opacity:.7}
+.login-hero-text p{font-size:16px;opacity:.75;max-width:340px;line-height:1.7}
+.login-features{display:flex;flex-direction:column;gap:12px}
+.login-feat{display:flex;align-items:center;gap:12px;color:white;font-size:14px;opacity:.85}
+.login-feat-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.5);flex-shrink:0}
+.login-right{display:flex;align-items:center;justify-content:center;padding:48px 40px;background:var(--surface)}
+.login-form-box{width:100%;max-width:380px}
+.login-form-box h2{font-size:24px;font-weight:800;color:var(--text-1);letter-spacing:-.4px;margin-bottom:6px}
+.login-form-box .subtitle{font-size:14px;color:var(--text-3);margin-bottom:32px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:6px}
+.inp-wrap{position:relative}
+.inp-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-3);pointer-events:none;display:flex}
+.inp{width:100%;padding:11px 14px 11px 40px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:14px;color:var(--text-1);background:var(--surface);outline:none;transition:border-color var(--t),box-shadow var(--t)}
+.inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.inp.no-icon{padding-left:14px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:var(--r-sm);font-size:13.5px;font-weight:600;transition:all var(--t);white-space:nowrap;cursor:pointer}
+.btn-primary{background:var(--blue);color:white;border:none}
+.btn-primary:hover{background:var(--blue-dark);box-shadow:0 4px 14px rgba(37,99,235,.35);transform:translateY(-1px)}
+.btn-primary:active{transform:none;box-shadow:none}
+.btn-ghost{background:transparent;color:var(--text-2);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--bg);border-color:var(--border-dark)}
+.btn-danger{background:transparent;color:var(--red);border:1.5px solid #fecaca}
+.btn-danger:hover{background:var(--red-light)}
+.btn-sm{padding:7px 12px;font-size:12.5px}
+.btn-full{width:100%;justify-content:center;padding:12px}
+.btn-icon{width:32px;height:32px;padding:0;justify-content:center;border-radius:var(--r-sm);border:1.5px solid var(--border);color:var(--text-2);background:var(--surface);flex-shrink:0}
+.btn-icon:hover{background:var(--bg);color:var(--text-1)}
+.btn-icon.danger:hover{background:var(--red-light);color:var(--red);border-color:#fecaca}
+.err-msg{background:var(--red-light);color:var(--red);border-radius:var(--r-sm);padding:10px 14px;font-size:13px;font-weight:500;margin-top:10px;display:flex;align-items:center;gap:8px}
+.login-note{font-size:12px;color:var(--text-3);text-align:center;margin-top:20px;line-height:1.7}
+.login-note strong{color:var(--blue)}
+
+/* ── APP LAYOUT ── */
+#scr-app{display:flex;flex-direction:column;min-height:100vh}
+
+/* TOP NAV */
+.topnav{height:var(--nav-h);background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:0;position:sticky;top:0;z-index:80;box-shadow:var(--shadow-xs)}
+.topnav-brand{display:flex;align-items:center;gap:10px;width:var(--side-w);flex-shrink:0}
+.brand-logo{width:32px;height:32px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.brand-name{font-size:15px;font-weight:700;color:var(--text-1);letter-spacing:-.2px}
+.topnav-right{display:flex;align-items:center;gap:6px;margin-left:auto}
+.notif-btn{position:relative;width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:all var(--t)}
+.notif-btn:hover{background:var(--bg);color:var(--text-1)}
+.notif-badge{position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--red);border-radius:50%;border:2px solid var(--surface);animation:pulse 2s infinite}
+.logout-btn{width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:all var(--t)}
+.logout-btn:hover{background:var(--red-light);color:var(--red)}
+
+/* BODY = SIDEBAR + MAIN */
+.app-body{display:flex;flex:1}
+
+/* SIDEBAR */
+.sidebar{width:var(--side-w);background:var(--surface);border-right:1px solid var(--border);padding:16px 10px;position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;flex-shrink:0}
+.nav-section{margin-bottom:4px}
+.nav-label{font-size:11px;font-weight:600;color:var(--text-4);text-transform:uppercase;letter-spacing:.06em;padding:0 10px;margin-bottom:6px;margin-top:16px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:var(--r-sm);font-size:13.5px;font-weight:500;color:var(--text-2);width:100%;transition:all var(--t);text-align:left;position:relative}
+.nav-item:hover{background:var(--bg);color:var(--text-1)}
+.nav-item.active{background:var(--blue-light);color:var(--blue);font-weight:600}
+.nav-item svg{flex-shrink:0;opacity:.7}
+.nav-item.active svg{opacity:1}
+.nav-badge{margin-left:auto;font-size:11px;font-weight:700;background:var(--red);color:white;padding:1px 7px;border-radius:20px}
+
+/* MAIN */
+.main{flex:1;padding:24px 28px;min-width:0}
+.page{display:none}
+.page.active{display:block;animation:fadeUp .3s ease both}
+.page-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.page-hdr-left h2{font-size:20px;font-weight:800;color:var(--text-1);letter-spacing:-.3px}
+.page-hdr-left p{font-size:13px;color:var(--text-3);margin-top:2px}
+.page-hdr-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm);transition:box-shadow var(--t),transform var(--t)}
+.stat-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.stat-ico{width:42px;height:42px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ico-blue{background:var(--blue-light);color:var(--blue)}
+.ico-teal{background:var(--teal-light);color:var(--teal)}
+.ico-amber{background:var(--amber-light);color:var(--amber)}
+.ico-red{background:var(--red-light);color:var(--red)}
+.ico-purple{background:var(--purple-light);color:var(--purple)}
+.stat-val{font-size:26px;font-weight:800;color:var(--text-1);line-height:1;letter-spacing:-.5px}
+.stat-lbl{font-size:12px;color:var(--text-3);margin-top:2px}
+
+/* ── VEHICLE CARDS ── */
+.vehicle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.vcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);cursor:pointer;transition:all var(--t);opacity:0;transform:translateY(12px);animation:cardIn .4s ease forwards}
+.vcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.vcard-top{padding:18px 18px 14px;position:relative;border-bottom:1px solid var(--border)}
+.vcard-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.05em}
+.b-motor{background:var(--blue-light);color:var(--blue)}
+.b-mobil{background:var(--teal-light);color:var(--teal)}
+.vcard-name{font-size:16px;font-weight:700;color:var(--text-1);margin-bottom:2px;padding-right:60px}
+.vcard-plate{font-size:12px;color:var(--text-3);font-family:monospace;letter-spacing:.08em}
+.vcard-owner{font-size:11px;color:var(--blue);font-weight:600;margin-top:5px;display:flex;align-items:center;gap:4px}
+.vcard-mid{padding:14px 18px}
+.vcard-km{display:flex;align-items:baseline;gap:3px;margin-bottom:10px}
+.vcard-km-val{font-size:24px;font-weight:800;color:var(--text-1);letter-spacing:-.5px}
+.vcard-km-unit{font-size:12px;color:var(--text-3)}
+.prog-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--text-3);margin-bottom:5px}
+.prog-wrap{height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1);width:0}
+.pf-green{background:linear-gradient(90deg,#059669,#10B981)}
+.pf-amber{background:linear-gradient(90deg,#D97706,#F59E0B)}
+.pf-red{background:linear-gradient(90deg,#DC2626,#EF4444)}
+.vcard-bot{padding:10px 18px;background:var(--bg);display:flex;align-items:center;justify-content:space-between}
+.vcard-last{font-size:11px;color:var(--text-3)}
+.status-badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px}
+.sb-ok{background:var(--teal-light);color:var(--teal)}
+.sb-warn{background:var(--amber-light);color:var(--amber)}
+.sb-urgent{background:var(--red-light);color:var(--red)}
+.sb-unknown{background:#F1F5F9;color:#64748B}
+
+/* skeleton */
+.skel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);height:200px;overflow:hidden;position:relative}
+.skel::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);background-size:200% 100%;animation:shimmer 1.3s infinite}
+
+/* empty state */
+.empty{text-align:center;padding:56px 24px;color:var(--text-3)}
+.empty svg{margin:0 auto 14px;opacity:.3}
+.empty h4{font-size:15px;font-weight:700;color:var(--text-2);margin-bottom:6px}
+.empty p{font-size:13px;margin-bottom:18px}
+
+/* ── LIST ROWS ── */
+.list-row{display:flex;flex-direction:column;gap:10px}
+.list-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-xs);transition:all var(--t);animation:fadeUp .3s ease both}
+.list-item:hover{box-shadow:var(--shadow-md);border-color:var(--border-dark)}
+.list-avatar{width:44px;height:44px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.la-blue{background:var(--blue-light);color:var(--blue)}
+.la-teal{background:var(--teal-light);color:var(--teal)}
+.la-amber{background:var(--amber-light);color:var(--amber)}
+.la-red{background:var(--red-light);color:var(--red)}
+.la-purple{background:var(--purple-light);color:var(--purple)}
+.list-info{flex:1;min-width:0}
+.list-name{font-size:14px;font-weight:600;color:var(--text-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-sub{font-size:12px;color:var(--text-3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-actions{display:flex;gap:6px;flex-shrink:0}
+.list-meta{font-size:13px;font-weight:700;color:var(--text-1);white-space:nowrap;text-align:right}
+.list-meta-sub{font-size:11px;color:var(--text-3);text-align:right;margin-top:2px}
+
+/* service tags */
+.tag-wrap{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--blue-light);color:var(--blue)}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-amber{background:var(--amber-light);color:var(--amber)}
+.tag-purple{background:var(--purple-light);color:var(--purple)}
+
+/* ── REMINDER ── */
+.reminder-list{display:flex;flex-direction:column;gap:10px}
+.rem-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-xs);animation:fadeUp .3s ease both;transition:all var(--t)}
+.rem-item:hover{box-shadow:var(--shadow-md)}
+.rem-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.rem-info{flex:1;min-width:0}
+.rem-title{font-size:14px;font-weight:600;color:var(--text-1)}
+.rem-sub{font-size:12px;color:var(--text-3);margin-top:2px}
+.rem-date{font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.rd-ok{background:var(--teal-light);color:var(--teal)}
+.rd-warn{background:var(--amber-light);color:var(--amber)}
+.rd-urgent{background:var(--red-light);color:var(--red)}
+
+/* ── FILTER ── */
+.filter-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.filter-bar select,.filter-bar input{padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13px;color:var(--text-1);background:var(--surface);outline:none;transition:border-color var(--t)}
+.filter-bar select:focus,.filter-bar input:focus{border-color:var(--blue)}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
+
+/* ── SECTION CARD ── */
+.section-hdr{font-size:13px;font-weight:700;color:var(--text-2);margin-bottom:12px;margin-top:24px;display:flex;align-items:center;gap:8px}
+.section-hdr::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ── FORMS ── */
+.modal-back{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeIn .2s}
+.modal-back.hidden{display:none!important}
+.modal{background:var(--surface);border-radius:var(--r-lg);width:100%;max-width:520px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-xl);animation:modalIn .25s cubic-bezier(.34,1.56,.64,1)}
+.modal-lg{max-width:680px}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);flex-shrink:0}
+.modal-hdr h3{font-size:16px;font-weight:700;color:var(--text-1)}
+.modal-x{width:30px;height:30px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text-3);transition:all var(--t)}
+.modal-x:hover{background:var(--bg);color:var(--text-1)}
+.modal-body{padding:22px;overflow-y:auto;flex:1}
+.modal-ftr{padding:14px 22px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:12.5px;font-weight:600;color:var(--text-2);margin-bottom:5px}
+.form-inp{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-size:13.5px;color:var(--text-1);background:var(--surface);outline:none;transition:border-color var(--t),box-shadow var(--t)}
+.form-inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.form-textarea{resize:vertical;min-height:72px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.type-picker{display:flex;gap:8px}
+.type-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 10px;border:2px solid var(--border);border-radius:var(--r);font-size:13px;font-weight:600;color:var(--text-2);background:var(--surface);transition:all var(--t)}
+.type-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+.type-btn.active{border-color:var(--blue);background:var(--blue-light);color:var(--blue)}
+.stype-grid{display:flex;flex-wrap:wrap;gap:7px}
+.stype-btn{padding:6px 12px;border:1.5px solid var(--border);border-radius:20px;font-size:12.5px;font-weight:500;color:var(--text-2);background:var(--surface);transition:all var(--t)}
+.stype-btn:hover{border-color:var(--blue);color:var(--blue)}
+.stype-btn.active{border-color:var(--blue);background:var(--blue-light);color:var(--blue)}
+
+/* wizard */
+.wiz-steps{display:flex;align-items:center;margin-bottom:22px}
+.wiz-step{width:30px;height:30px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text-3);background:var(--surface);transition:all var(--t);flex-shrink:0}
+.wiz-step.active{border-color:var(--blue);background:var(--blue);color:white}
+.wiz-step.done{border-color:var(--teal);background:var(--teal);color:white}
+.wiz-line{flex:1;height:2px;background:var(--border);transition:background var(--t)}
+.wiz-line.done{background:var(--teal)}
+.wiz-lbl{font-size:12px;font-weight:600;color:var(--text-3);margin-bottom:16px}
+.wiz-panel{display:none}
+.wiz-panel.active{display:block;animation:fadeUp .25s ease}
+
+/* detail sections */
+.detail-sec{margin-bottom:22px}
+.detail-sec-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-3);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.d-field label{font-size:11px;color:var(--text-3);display:block;margin-bottom:2px}
+.d-field span{font-size:13.5px;font-weight:500;color:var(--text-1)}
+.sched-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.sched-table th{text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--text-3);padding:0 8px 7px}
+.sched-table td{padding:9px 8px;border-top:1px solid var(--border);color:var(--text-2);vertical-align:middle}
+.sched-table td:first-child{font-weight:500;color:var(--text-1)}
+.sched-table tr:hover td{background:var(--bg)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--text-1);color:white;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:500;z-index:9999;opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.34,1.56,.64,1);white-space:nowrap;box-shadow:var(--shadow-xl)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.hidden{display:none}
+
+/* ── HELP BTN ── */
+.help-btn{position:fixed;bottom:22px;right:22px;width:50px;height:50px;background:var(--blue);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,99,235,.45);z-index:300;transition:all var(--t)}
+.help-btn:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(37,99,235,.55)}
+
+/* ── GUIDED TOUR ── */
+.tour-mask{position:fixed;inset:0;z-index:600;pointer-events:none}
+.tour-mask.active{pointer-events:all}
+/* 4 dark panels around the highlighted element */
+.tour-panel{position:fixed;background:rgba(15,23,42,.7);transition:all .3s ease;z-index:600;pointer-events:all}
+.tour-popup{position:fixed;background:var(--surface);border-radius:var(--r-lg);padding:20px 22px 18px;box-shadow:var(--shadow-xl);z-index:601;width:310px;animation:modalIn .3s cubic-bezier(.34,1.56,.64,1);transition:top .3s ease,left .3s ease}
+.tour-dots{display:flex;gap:5px;margin-bottom:10px}
+.tour-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all .2s}
+.tour-dot.on{background:var(--blue);transform:scale(1.3)}
+.tour-badge{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);background:var(--blue-light);display:inline-block;padding:2px 9px;border-radius:20px;margin-bottom:8px}
+.tour-title{font-size:15px;font-weight:700;color:var(--text-1);margin-bottom:6px}
+.tour-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:16px}
+.tour-ftr{display:flex;justify-content:space-between;align-items:center}
+.tour-skip{font-size:12px;color:var(--text-3);background:none;border:none;cursor:pointer;padding:4px 0;transition:color var(--t)}
+.tour-skip:hover{color:var(--text-1)}
+/* highlight ring */
+.tour-ring{position:fixed;border:2.5px solid var(--blue);border-radius:var(--r-sm);z-index:601;pointer-events:none;box-shadow:0 0 0 4px rgba(37,99,235,.2);transition:all .3s ease}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.shake{animation:shake .35s ease}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .app-body{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:fixed;bottom:0;left:0;right:0;top:auto;border-right:none;border-top:1px solid var(--border);padding:6px 8px;display:flex;z-index:79;box-shadow:0 -2px 10px rgba(0,0,0,.07)}
+  .nav-label,.nav-section:first-child .nav-label{display:none}
+  .nav-section{display:flex;flex:1}
+  .nav-item{flex-direction:column;gap:3px;font-size:10px;padding:7px 4px;flex:1;justify-content:center}
+  .nav-badge{display:none}
+  .main{padding:16px 14px 80px}
+  .stats{grid-template-columns:1fr 1fr}
+  .login-wrap{grid-template-columns:1fr}
+  .login-left{min-height:240px;max-height:300px}
+  .help-btn{bottom:75px}
+  .toast{bottom:85px}
+}
+@media(max-width:480px){
+  .page-hdr{flex-direction:column}
+  .form-row{grid-template-columns:1fr}
+  .detail-grid{grid-template-columns:1fr}
+  .vehicle-grid{grid-template-columns:1fr}
+  .modal{border-radius:var(--r-lg) var(--r-lg) 0 0;align-self:flex-end;max-height:95vh}
+  .modal-back{padding:0;align-items:flex-end}
+  .tour-popup{width:calc(100vw - 24px);left:12px!important;right:12px}
+}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div id="scr-login" class="scr">
+  <div class="login-wrap">
+    <div class="login-left">
+      <img src="images/family.jpg" alt="" class="login-img" onerror="this.style.display='none'"/>
+      <div class="login-left-inner">
+        <div class="login-logo">
+          <div class="login-logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M17 17H9"/></svg>
+          </div>
+          <span class="login-logo-text">Keluarga Imam</span>
+        </div>
+        <div class="login-hero-text">
+          <h1>Kelola Servis<br/><span>Kendaraan Keluarga</span></h1>
+          <p>Satu tempat untuk semua catatan servis, pengingat STNK, dan riwayat bengkel keluarga.</p>
+        </div>
+        <div class="login-features">
+          <div class="login-feat"><div class="login-feat-dot"></div>Dashboard real-time semua kendaraan</div>
+          <div class="login-feat"><div class="login-feat-dot"></div>Reminder otomatis servis & pajak</div>
+          <div class="login-feat"><div class="login-feat-dot"></div>Riwayat servis lengkap & terorganisir</div>
+          <div class="login-feat"><div class="login-feat-dot"></div>Direktori bengkel favorit keluarga</div>
+        </div>
+      </div>
+    </div>
+    <div class="login-right">
+      <div class="login-form-box">
+        <h2>Selamat Datang 👋</h2>
+        <p class="subtitle">Masuk dengan kode keluarga untuk melanjutkan</p>
+        <div class="form-group">
+          <label class="form-label">Kode Keluarga</label>
+          <div class="inp-wrap">
+            <span class="inp-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <input type="password" id="login-inp" class="inp" placeholder="Ketik kode keluarga lalu Enter..."/>
+          </div>
+        </div>
+        <div id="login-err" class="err-msg hidden">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Kode salah. Coba lagi.
+        </div>
+        <button class="btn btn-primary btn-full" onclick="doLogin()" style="margin-top:12px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          Masuk ke Aplikasi
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ APP ═══════════ -->
+<div id="scr-app" class="scr hidden">
+  <nav class="topnav">
+    <div class="topnav-brand">
+      <div class="brand-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M17 17H9"/></svg>
+      </div>
+      <span class="brand-name">Keluarga Imam</span>
+    </div>
+    <div class="topnav-right">
+      <button class="notif-btn" onclick="openNotif()" title="Notifikasi">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-badge hidden" id="notif-badge"></span>
+      </button>
+      <button class="logout-btn" onclick="doLogout()" title="Keluar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="app-body">
+    <aside class="sidebar" id="sidebar">
+      <div class="nav-section">
+        <div class="nav-label">Menu</div>
+        <button class="nav-item active" data-page="dashboard" onclick="goPage('dashboard')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-page="vehicles" onclick="goPage('vehicles')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M17 17H9"/></svg>
+          <span>Kendaraan</span>
+        </button>
+        <button class="nav-item" data-page="services" onclick="goPage('services')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span>Riwayat Servis</span>
+        </button>
+        <button class="nav-item" data-page="reminders" onclick="goPage('reminders')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span>Reminder</span>
+          <span class="nav-badge hidden" id="nb-rem">0</span>
+        </button>
+        <button class="nav-item" data-page="workshops" onclick="goPage('workshops')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Bengkel</span>
+        </button>
+        <div style="height:1px;background:var(--border);margin:10px 0"></div>
+        <a class="nav-item" href="panduan-servis-kendaraan.html" target="_blank" style="text-decoration:none">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>📖 Panduan Servis</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- DASHBOARD -->
+      <div id="page-dashboard" class="page active" style="display:block">
+        <div class="page-hdr">
+          <div class="page-hdr-left">
+            <h2>Dashboard</h2>
+            <p id="greeting">Selamat datang, Keluarga Imam</p>
+          </div>
+          <div class="page-hdr-right">
+            <button class="btn btn-primary btn-sm" onclick="openAddVehicle()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Tambah Kendaraan
+            </button>
+          </div>
+        </div>
+        <div class="stats" id="stats-row">
+          <div class="stat-card"><div class="stat-ico ico-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/></svg></div><div><div class="stat-val" id="s-total">0</div><div class="stat-lbl">Total Kendaraan</div></div></div>
+          <div class="stat-card"><div class="stat-ico ico-teal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="stat-val" id="s-ok">0</div><div class="stat-lbl">Kondisi Baik</div></div></div>
+          <div class="stat-card"><div class="stat-ico ico-amber"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div><div class="stat-val" id="s-warn">0</div><div class="stat-lbl">Perlu Perhatian</div></div></div>
+          <div class="stat-card"><div class="stat-ico ico-red"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><div class="stat-val" id="s-urgent">0</div><div class="stat-lbl">Segera Servis</div></div></div>
+        </div>
+        <div class="section-hdr">Kendaraan Keluarga</div>
+        <div class="vehicle-grid" id="vgrid"><div class="skel"></div><div class="skel"></div></div>
+      </div>
+
+      <!-- KENDARAAN -->
+      <div id="page-vehicles" class="page" style="display:none">
+        <div class="page-hdr">
+          <div class="page-hdr-left"><h2>Kendaraan</h2><p>Kelola semua kendaraan keluarga</p></div>
+          <div class="page-hdr-right"><button class="btn btn-primary btn-sm" onclick="openAddVehicle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Tambah Kendaraan</button></div>
+        </div>
+        <div class="list-row" id="vlist"></div>
+      </div>
+
+      <!-- SERVIS -->
+      <div id="page-services" class="page" style="display:none">
+        <div class="page-hdr">
+          <div class="page-hdr-left"><h2>Riwayat Servis</h2><p>Semua catatan servis kendaraan keluarga</p></div>
+          <div class="page-hdr-right">
+            <a href="panduan-servis-kendaraan.html" target="_blank" class="btn btn-ghost btn-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Panduan Servis
+            </a>
+            <button class="btn btn-primary btn-sm" onclick="openAddService()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Catat Servis</button>
+          </div>
+        </div>
+        <div class="filter-bar">
+          <select id="fv" onchange="renderServices()"><option value="">Semua Kendaraan</option></select>
+          <select id="ft" onchange="renderServices()"><option value="">Semua Jenis</option><option>Ganti Oli</option><option>Tune Up</option><option>Ganti Busi</option><option>Filter Udara</option><option>Servis Rem</option><option>Ganti Ban</option><option>Cek Aki</option><option>Lainnya</option></select>
+        </div>
+        <div class="list-row" id="slist"></div>
+      </div>
+
+      <!-- REMINDER -->
+      <div id="page-reminders" class="page" style="display:none">
+        <div class="page-hdr">
+          <div class="page-hdr-left"><h2>Reminder</h2><p>Pengingat servis, STNK, dan ganti ban otomatis</p></div>
+        </div>
+        <div class="reminder-list" id="rlist"></div>
+      </div>
+
+      <!-- BENGKEL -->
+      <div id="page-workshops" class="page" style="display:none">
+        <div class="page-hdr">
+          <div class="page-hdr-left"><h2>Bengkel Favorit</h2><p>Direktori bengkel dan kontak penting</p></div>
+          <div class="page-hdr-right"><button class="btn btn-primary btn-sm" onclick="openAddWorkshop()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Tambah Bengkel</button></div>
+        </div>
+        <div class="list-row" id="wlist"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ═══ MODAL: KENDARAAN ═══ -->
+<div id="m-vehicle" class="modal-back hidden" onclick="closeBD(event,'m-vehicle')">
+  <div class="modal">
+    <div class="modal-hdr"><h3 id="m-vehicle-title">Tambah Kendaraan</h3><button class="modal-x" onclick="closeM('m-vehicle')">&times;</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="vid"/>
+      <div class="wiz-steps" id="wiz-steps">
+        <div class="wiz-step active" data-s="1">1</div><div class="wiz-line" id="wl1"></div>
+        <div class="wiz-step" data-s="2">2</div><div class="wiz-line" id="wl2"></div>
+        <div class="wiz-step" data-s="3">3</div>
+      </div>
+      <!-- step 1 -->
+      <div class="wiz-panel active" id="ws1">
+        <p class="wiz-lbl">Langkah 1 — Jenis & Merek</p>
+        <div class="form-group"><label class="form-label">Jenis Kendaraan</label>
+          <div class="type-picker">
+            <button class="type-btn active" data-t="Motor" onclick="pickType(this,'Motor')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M17 17H9"/></svg>Motor</button>
+            <button class="type-btn" data-t="Mobil" onclick="pickType(this,'Mobil')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Mobil</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Merek</label>
+            <select id="vbrand" class="form-inp"><option value="">-- Pilih Merek --</option><option>Honda</option><option>Yamaha</option><option>Suzuki</option><option>Kawasaki</option><option>Toyota</option><option>Daihatsu</option><option>Mitsubishi</option><option>Nissan</option><option>Mazda</option><option>Hyundai</option><option>Lainnya</option></select>
+          </div>
+          <div class="form-group"><label class="form-label">Model / Tipe</label>
+            <input type="text" id="vmodel" class="form-inp" placeholder="Vario 125, Avanza..."/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Tahun</label><select id="vyear" class="form-inp"></select></div>
+          <div class="form-group"><label class="form-label">Warna</label><input type="text" id="vcolor" class="form-inp" placeholder="Putih, Hitam..."/></div>
+        </div>
+      </div>
+      <!-- step 2 -->
+      <div class="wiz-panel hidden" id="ws2">
+        <p class="wiz-lbl">Langkah 2 — Detail Kendaraan</p>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Nomor Polisi</label><input type="text" id="vplate" class="form-inp" placeholder="B 1234 ABC" style="text-transform:uppercase"/></div>
+          <div class="form-group"><label class="form-label">Pemilik</label>
+            <input type="text" id="vowner" class="form-inp" placeholder="Nama pemilik kendaraan..."/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Odometer Sekarang (km)</label><input type="number" id="vodo" class="form-inp" placeholder="15000" min="0"/></div>
+          <div class="form-group"><label class="form-label">Nomor Mesin (opsional)</label><input type="text" id="vengine" class="form-inp" placeholder="Nomor mesin"/></div>
+        </div>
+        <div class="form-group"><label class="form-label">Tanggal Beli / Kepemilikan</label><input type="date" id="vbuydate" class="form-inp"/></div>
+        <div class="form-group"><label class="form-label">Catatan Kendaraan</label><textarea id="vnotes" class="form-inp form-textarea" placeholder="Kondisi, modifikasi, atau catatan penting..."></textarea></div>
+      </div>
+      <!-- step 3 -->
+      <div class="wiz-panel hidden" id="ws3">
+        <p class="wiz-lbl">Langkah 3 — Dokumen & Reminder</p>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">📋 Jatuh Tempo Pajak STNK</label><input type="date" id="vstnk" class="form-inp"/></div>
+          <div class="form-group"><label class="form-label">📋 STNK 5 Tahunan</label><input type="date" id="vstnk5" class="form-inp"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">💰 PKB Tahun Lalu (Rp)</label><input type="number" id="vpkb" class="form-inp" placeholder="Nominal pajak"/></div>
+          <div class="form-group"><label class="form-label">🛞 Tanggal Pasang Ban</label><input type="date" id="vtire" class="form-inp"/></div>
+        </div>
+        <div class="form-group"><label class="form-label">📅 Terakhir Ganti Oli</label>
+          <div class="form-row">
+            <input type="date" id="voildate" class="form-inp"/>
+            <input type="number" id="voilkm" class="form-inp" placeholder="Km saat ganti oli"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost btn-sm" id="wiz-back" onclick="wizBack()" style="display:none">← Kembali</button>
+      <button class="btn btn-primary btn-sm" id="wiz-next" onclick="wizNext()">Lanjut →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: SERVIS ═══ -->
+<div id="m-service" class="modal-back hidden" onclick="closeBD(event,'m-service')">
+  <div class="modal">
+    <div class="modal-hdr"><h3 id="m-service-title">Catat Servis</h3><button class="modal-x" onclick="closeM('m-service')">&times;</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="sid"/>
+      <div class="form-group"><label class="form-label">Kendaraan *</label>
+        <select id="sv" class="form-inp"><option value="">-- Pilih Kendaraan --</option></select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Tanggal Servis *</label><input type="date" id="sdate" class="form-inp"/></div>
+        <div class="form-group"><label class="form-label">Odometer (km)</label><input type="number" id="sodo" class="form-inp" placeholder="km saat ini" min="0"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Jenis Servis * (pilih satu atau lebih)</label>
+        <div class="stype-grid" id="stype-grid">
+          <button class="stype-btn" onclick="togStype(this)">Ganti Oli</button>
+          <button class="stype-btn" onclick="togStype(this)">Tune Up</button>
+          <button class="stype-btn" onclick="togStype(this)">Ganti Busi</button>
+          <button class="stype-btn" onclick="togStype(this)">Filter Udara</button>
+          <button class="stype-btn" onclick="togStype(this)">Servis Rem</button>
+          <button class="stype-btn" onclick="togStype(this)">Ganti Ban</button>
+          <button class="stype-btn" onclick="togStype(this)">Cek Aki</button>
+          <button class="stype-btn" onclick="togStype(this)">Ganti Rantai</button>
+          <button class="stype-btn" onclick="togStype(this)">Servis Injeksi</button>
+          <button class="stype-btn" onclick="togStype(this)">Ganti Filter Oli</button>
+          <button class="stype-btn" id="btn-lainnya" onclick="togLainnya(this)">Lainnya</button>
+        </div>
+        <div id="lainnya-wrap" style="display:none;margin-top:10px">
+          <input type="text" id="s-lainnya-text" class="form-inp" placeholder="Contoh: Ganti Kampas Kopling, Servis CVT, dll..." oninput="updateLainnya()"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Bengkel</label><input type="text" id="sws" class="form-inp" placeholder="Nama bengkel"/></div>
+        <div class="form-group"><label class="form-label">Total Biaya (Rp)</label><input type="number" id="scost" class="form-inp" placeholder="0" min="0"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Servis Berikutnya (km)</label><input type="number" id="snextkm" class="form-inp" placeholder="km servis berikutnya"/></div>
+        <div class="form-group"><label class="form-label">Servis Berikutnya (tanggal)</label><input type="date" id="snextdate" class="form-inp"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Catatan / Detail Pekerjaan</label><textarea id="snotes" class="form-inp form-textarea" placeholder="Sparepart yang diganti, kondisi kendaraan, rekomendasi mekanik..."></textarea></div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost btn-sm" onclick="closeM('m-service')">Batal</button>
+      <button class="btn btn-primary btn-sm" onclick="saveService()">Simpan Servis</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: BENGKEL ═══ -->
+<div id="m-workshop" class="modal-back hidden" onclick="closeBD(event,'m-workshop')">
+  <div class="modal">
+    <div class="modal-hdr"><h3 id="m-ws-title">Tambah Bengkel</h3><button class="modal-x" onclick="closeM('m-workshop')">&times;</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="wid"/>
+      <div class="form-group"><label class="form-label">Nama Bengkel *</label><input type="text" id="wname" class="form-inp" placeholder="Bengkel Pak Budi, AHASS..."/></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">No. Telepon</label><input type="tel" id="wphone" class="form-inp" placeholder="08xxxxxxxxxx"/></div>
+        <div class="form-group"><label class="form-label">Spesialis</label>
+          <select id="wspec" class="form-inp"><option>Motor & Mobil</option><option>Motor Saja</option><option>Mobil Saja</option><option>Bengkel Resmi (AHASS/Auto2000)</option><option>Spesialis AC</option><option>Spesialis Ban</option><option>Spesialis Body</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Alamat</label><input type="text" id="waddr" class="form-inp" placeholder="Jl. Merdeka No. 10, Jakarta..."/></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Jam Buka</label><input type="text" id="whours" class="form-inp" placeholder="08.00 - 17.00"/></div>
+        <div class="form-group"><label class="form-label">Rating (1-5 ⭐)</label>
+          <select id="wrating" class="form-inp"><option value="5">⭐⭐⭐⭐⭐ Sangat Bagus</option><option value="4">⭐⭐⭐⭐ Bagus</option><option value="3">⭐⭐⭐ Cukup</option><option value="2">⭐⭐ Kurang</option><option value="1">⭐ Buruk</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Catatan / Review</label><textarea id="wnotes" class="form-inp form-textarea" placeholder="Harga, kualitas, pelayanan, waktu tunggu..."></textarea></div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost btn-sm" onclick="closeM('m-workshop')">Batal</button>
+      <button class="btn btn-primary btn-sm" onclick="saveWorkshop()">Simpan Bengkel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: DETAIL KENDARAAN ═══ -->
+<div id="m-detail" class="modal-back hidden" onclick="closeBD(event,'m-detail')">
+  <div class="modal modal-lg">
+    <div class="modal-hdr"><h3 id="m-detail-title">Detail Kendaraan</h3><button class="modal-x" onclick="closeM('m-detail')">&times;</button></div>
+    <div class="modal-body" id="m-detail-body"></div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: NOTIFIKASI ═══ -->
+<div id="m-notif" class="modal-back hidden" onclick="closeBD(event,'m-notif')">
+  <div class="modal">
+    <div class="modal-hdr"><h3>Notifikasi</h3><button class="modal-x" onclick="closeM('m-notif')">&times;</button></div>
+    <div class="modal-body" id="m-notif-body"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- HELP BUTTON -->
+<button class="help-btn" onclick="startTour()" title="Panduan Penggunaan">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+</button>
+
+<!-- ═══ GUIDED TOUR ═══ -->
+<div id="tour-mask" class="tour-mask">
+  <!-- 4 dark panels that create spotlight effect -->
+  <div id="tp-top" class="tour-panel" style="top:0;left:0;right:0"></div>
+  <div id="tp-bot" class="tour-panel" style="bottom:0;left:0;right:0"></div>
+  <div id="tp-left" class="tour-panel"></div>
+  <div id="tp-right" class="tour-panel"></div>
+  <!-- highlight ring -->
+  <div id="tour-ring" class="tour-ring" style="display:none"></div>
+  <!-- popup -->
+  <div id="tour-popup" class="tour-popup" style="display:none">
+    <div class="tour-dots" id="tour-dots"></div>
+    <div class="tour-badge" id="t-badge">1 dari 7</div>
+    <div class="tour-title" id="t-title"></div>
+    <div class="tour-desc" id="t-desc"></div>
+    <div class="tour-ftr">
+      <button class="tour-skip" onclick="endTour()">Lewati semua</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost btn-sm" id="t-back" onclick="prevTour()">← Kembali</button>
+        <button class="btn btn-primary btn-sm" id="t-next" onclick="nextTour()">Lanjut →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══ CONFIG ═══
+const FAMILY_CODE = 'imamfamily2024';
+
+// ═══ SERVICE SCHEDULE ═══
+const SCHED = {
+  Motor:[
+    {name:'Ganti Oli Mesin',km:2000,months:3},
+    {name:'Ganti Busi',km:8000,months:12},
+    {name:'Filter Udara',km:12000,months:12},
+    {name:'Servis Injeksi/Karburator',km:6000,months:6},
+    {name:'Cek & Servis Rem',km:6000,months:6},
+    {name:'Ganti Rantai / V-Belt',km:20000,months:24},
+    {name:'Tune Up Ringan',km:6000,months:6},
+    {name:'Tune Up Besar',km:24000,months:24},
+  ],
+  Mobil:[
+    {name:'Ganti Oli Mesin',km:5000,months:6},
+    {name:'Filter Oli',km:5000,months:6},
+    {name:'Filter Udara',km:20000,months:12},
+    {name:'Busi',km:20000,months:24},
+    {name:'Cek Rem & Kampas',km:10000,months:12},
+    {name:'Oli Transmisi',km:40000,months:24},
+    {name:'Filter Bahan Bakar',km:40000,months:24},
+    {name:'Timing Belt',km:60000,months:48},
+    {name:'Tune Up',km:10000,months:12},
+    {name:'Cek AC & Freon',km:20000,months:12},
+    {name:'Fluida Rem',km:20000,months:24},
+  ]
+};
+
+// ═══ STATE ═══
+let V=[],S=[],W=[];
+let wizStep=1, vType='Motor';
+
+// ═══ STORAGE ═══
+const get=k=>JSON.parse(localStorage.getItem('ki_'+k)||'[]');
+const set=(k,d)=>localStorage.setItem('ki_'+k,JSON.stringify(d));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2);
+
+// ═══ LOGIN ═══
+document.getElementById('login-inp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+function doLogin(){
+  const v=document.getElementById('login-inp').value.trim();
+  const err=document.getElementById('login-err');
+  if(v===FAMILY_CODE){
+    err.classList.add('hidden');
+    sessionStorage.setItem('ki_auth','1');
+    boot();
+  } else {
+    err.classList.remove('hidden');
+    const i=document.getElementById('login-inp');
+    i.classList.add('shake');
+    setTimeout(()=>i.classList.remove('shake'),350);
+  }
+}
+function doLogout(){
+  if(!confirm('Keluar dari Keluarga Imam? Data tersimpan secara otomatis.'))return;
+  sessionStorage.removeItem('ki_auth');
+  document.getElementById('scr-app').classList.add('hidden');
+  document.getElementById('scr-login').classList.remove('hidden');
+  document.getElementById('login-inp').value='';
+  document.getElementById('login-err').classList.add('hidden');
+}
+
+// ═══ BOOT ═══
+function boot(){
+  document.getElementById('scr-login').classList.add('hidden');
+  document.getElementById('scr-app').classList.remove('hidden');
+  // greeting
+  const h=new Date().getHours();
+  const g=h<11?'Selamat pagi':h<15?'Selamat siang':h<18?'Selamat sore':'Selamat malam';
+  document.getElementById('greeting').textContent=g+', Keluarga Imam 👋';
+  // load
+  V=get('vehicles'); S=get('services'); W=get('workshops');
+  fillYears();
+  render();
+  if(!localStorage.getItem('ki_tour_done')) setTimeout(startTour,700);
+}
+
+function render(){
+  renderDash();
+  renderVehicles();
+  renderServices();
+  renderReminders();
+  renderWorkshops();
+  fillVehicleSelects();
+  checkNotif();
+}
+
+function fillYears(){
+  const sel=document.getElementById('vyear');
+  sel.innerHTML='';
+  const y=new Date().getFullYear();
+  for(let i=y;i>=1990;i--){
+    const o=document.createElement('option');o.value=i;o.textContent=i;sel.appendChild(o);
+  }
+}
+
+// ═══ NAVIGATION ═══
+function goPage(p){
+  ['dashboard','vehicles','services','reminders','workshops'].forEach(name=>{
+    const el=document.getElementById('page-'+name);
+    if(el){el.classList.remove('active');el.style.display='none';}
+  });
+  const target=document.getElementById('page-'+p);
+  if(target){target.classList.add('active');target.style.display='block';}
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+  const nb=document.querySelector('[data-page="'+p+'"]');
+  if(nb)nb.classList.add('active');
+  if(p==='vehicles')renderVehicles();
+  if(p==='services')renderServices();
+  if(p==='reminders')renderReminders();
+  if(p==='workshops')renderWorkshops();
+  // Update document title
+  const titles={dashboard:'Dashboard',vehicles:'Kendaraan',services:'Riwayat Servis',reminders:'Reminder',workshops:'Bengkel'};
+  document.title=(titles[p]||p)+' — Keluarga Imam';
+}
+
+// ═══ DASHBOARD ═══
+function renderDash(){
+  const grid=document.getElementById('vgrid');
+  grid.innerHTML='';
+  let ok=0,warn=0,urgent=0;
+  if(V.length===0){
+    grid.innerHTML=`<div class="empty" style="grid-column:1/-1">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/></svg>
+      <h4>Belum ada kendaraan</h4>
+      <p>Tambahkan kendaraan pertama keluarga Imam</p>
+      <button class="btn btn-primary" onclick="openAddVehicle()">+ Tambah Kendaraan</button>
+    </div>`;
+    ctr('s-total',0);ctr('s-ok',0);ctr('s-warn',0);ctr('s-urgent',0);
+    return;
+  }
+  V.forEach((v,i)=>{
+    const st=status(v);
+    if(st.lvl==='ok')ok++;else if(st.lvl==='warn')warn++;else if(st.lvl==='urgent')urgent++;
+    const pct=Math.min(100,Math.round(st.kmSince/st.kmInt*100));
+    const fc=pct>=90?'pf-red':pct>=70?'pf-amber':'pf-green';
+    const bc=st.lvl==='ok'?'sb-ok':st.lvl==='warn'?'sb-warn':st.lvl==='unknown'?'sb-unknown':'sb-urgent';
+    const bt=st.lvl==='ok'?'Kondisi Baik':st.lvl==='warn'?'Perlu Perhatian':st.lvl==='unknown'?'Catat Servis Pertama':'Segera Servis';
+    const card=document.createElement('div');
+    card.className='vcard';
+    card.style.animationDelay=(i*70)+'ms';
+    card.innerHTML=`
+      <div class="vcard-top">
+        <span class="vcard-badge ${v.type==='Motor'?'b-motor':'b-mobil'}">${v.type}</span>
+        <div class="vcard-name">${v.brand} ${v.model}</div>
+        <div class="vcard-plate">${v.plate||'—'}</div>
+        <div class="vcard-owner"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>${v.owner}</div>
+      </div>
+      <div class="vcard-mid">
+        <div class="vcard-km"><span class="vcard-km-val">${Number(v.odo||0).toLocaleString('id')}</span><span class="vcard-km-unit"> km</span></div>
+        <div class="prog-lbl"><span>Menuju servis berikutnya</span><span>${pct}%</span></div>
+        <div class="prog-wrap"><div class="prog-fill ${fc}" data-p="${pct}" style="width:0"></div></div>
+      </div>
+      <div class="vcard-bot">
+        <span class="vcard-last">${st.lastTxt}</span>
+        <span class="status-badge ${bc}">${bt}</span>
+      </div>`;
+    card.onclick=()=>openDetail(v.id);
+    grid.appendChild(card);
+  });
+  setTimeout(()=>document.querySelectorAll('.prog-fill').forEach(b=>b.style.width=b.dataset.p+'%'),100);
+  ctr('s-total',V.length);ctr('s-ok',ok);ctr('s-warn',warn);ctr('s-urgent',urgent);
+}
+
+function ctr(id,target){
+  const el=document.getElementById(id);
+  let c=0;const st=Math.max(1,Math.ceil(target/15));
+  const t=setInterval(()=>{c=Math.min(c+st,target);el.textContent=c;if(c>=target)clearInterval(t);},40);
+}
+
+function status(v){
+  const vS=S.filter(s=>s.vid===v.id).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const last=vS[0];
+  const sch=SCHED[v.type]||SCHED.Motor;
+  const kmInt=sch[0].km;
+
+  // Kalau belum pernah servis sama sekali → status "unknown", bukan urgent
+  if(!last && !v.oildate && !v.oilkm){
+    return{
+      lvl:'unknown',
+      kmSince:0,
+      kmInt,
+      daysSince:0,
+      lastTxt:'Belum ada catatan servis'
+    };
+  }
+
+  // Gunakan data servis terakhir ATAU data oli dari form kendaraan
+  const lastOdo = last ? last.odo : (v.oilkm||0);
+  const lastDate = last ? last.date : v.oildate;
+  const kmSince = Math.max(0,(v.odo||0)-(lastOdo||0));
+  const daysSince = lastDate
+    ? Math.floor((Date.now()-new Date(lastDate))/86400000)
+    : 0;
+
+  const kp=kmSince/kmInt;
+  const mp=daysSince/(sch[0].months*30);
+  const mx=Math.max(kp,mp);
+  const lvl=mx>=1?'urgent':mx>=0.75?'warn':'ok';
+  const lastTxt=last?'Servis '+fmtDate(last.date):(v.oildate?'Oli diganti '+fmtDate(v.oildate):'Belum ada catatan servis');
+  return{lvl,kmSince,kmInt,daysSince,lastTxt};
+}
+
+// ═══ VEHICLES ═══
+function renderVehicles(){
+  const el=document.getElementById('vlist');
+  el.innerHTML='';
+  if(V.length===0){
+    el.innerHTML=`<div class="empty"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/></svg><h4>Belum ada kendaraan</h4><p>Tambahkan kendaraan keluarga di sini</p><button class="btn btn-primary" onclick="openAddVehicle()">+ Tambah Kendaraan</button></div>`;
+    return;
+  }
+  V.forEach((v,i)=>{
+    const st=status(v);
+    const bc=st.lvl==='ok'?'sb-ok':st.lvl==='warn'?'sb-warn':'sb-urgent';
+    const bt=st.lvl==='ok'?'Baik':st.lvl==='warn'?'Perhatian':'Servis!';
+    const d=document.createElement('div');d.className='list-item';d.style.animationDelay=(i*50)+'ms';
+    d.innerHTML=`
+      <div class="list-avatar ${v.type==='Motor'?'la-blue':'la-teal'}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5"/><circle cx="18" cy="17" r="2"/><circle cx="7" cy="17" r="2"/><path d="M17 17H9"/></svg>
+      </div>
+      <div class="list-info">
+        <div class="list-name">${v.brand} ${v.model} ${v.year} — ${v.color||''}</div>
+        <div class="list-sub">${v.plate||'Plat belum diisi'} · Pemilik: ${v.owner} · ${Number(v.odo||0).toLocaleString('id')} km</div>
+      </div>
+      <span class="status-badge ${bc}" style="margin-right:8px">${bt}</span>
+      <div class="list-actions">
+        <button class="btn-icon" onclick="event.stopPropagation();openDetail('${v.id}')" title="Detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></button>
+        <button class="btn-icon" onclick="event.stopPropagation();editVehicle('${v.id}')" title="Edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn-icon danger" onclick="event.stopPropagation();delVehicle('${v.id}')" title="Hapus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
+      </div>`;
+    el.appendChild(d);
+  });
+}
+
+// ═══ ADD/EDIT VEHICLE ═══
+function openAddVehicle(){
+  wizStep=1;vType='Motor';
+  document.getElementById('vid').value='';
+  document.getElementById('m-vehicle-title').textContent='Tambah Kendaraan';
+  resetVForm();wizUI();openM('m-vehicle');
+}
+function editVehicle(id){
+  const v=V.find(x=>x.id===id);if(!v)return;
+  wizStep=1;vType=v.type;
+  document.getElementById('vid').value=id;
+  document.getElementById('m-vehicle-title').textContent='Edit Kendaraan';
+  resetVForm();
+  gv('vbrand',v.brand);gv('vmodel',v.model);gv('vyear',v.year);gv('vcolor',v.color);
+  gv('vplate',v.plate);gv('vowner',v.owner);gv('vodo',v.odo);gv('vengine',v.engine);
+  gv('vbuydate',v.buydate);gv('vnotes',v.notes);
+  gv('vstnk',v.stnk);gv('vstnk5',v.stnk5);gv('vpkb',v.pkb);gv('vtire',v.tire);
+  gv('voildate',v.oildate);gv('voilkm',v.oilkm);
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.toggle('active',b.dataset.t===v.type));
+  wizUI();openM('m-vehicle');
+}
+function gv(id,val){const e=document.getElementById(id);if(e&&val!==undefined)e.value=val||'';}
+function pickType(btn,t){
+  vType=t;
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function resetVForm(){
+  ['vbrand','vmodel','vcolor','vplate','vengine','vbuydate','vnotes','vstnk','vstnk5','vpkb','vtire','voildate','voilkm'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  document.getElementById('vodo').value='';
+  document.getElementById('vowner').value='';
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.toggle('active',b.dataset.t==='Motor'));
+  vType='Motor';
+}
+function wizNext(){
+  if(wizStep===1){
+    if(!document.getElementById('vbrand').value){toast('Pilih merek kendaraan');return;}
+    if(!document.getElementById('vmodel').value.trim()){toast('Isi model kendaraan');return;}
+  }
+  if(wizStep===2){
+    if(!document.getElementById('vowner').value.trim()){toast('Isi nama pemilik kendaraan');return;}
+    if(!document.getElementById('vodo').value&&document.getElementById('vodo').value!=='0'){toast('Isi odometer kendaraan');return;}
+  }
+  if(wizStep<3){wizStep++;wizUI();}else saveVehicle();
+}
+function wizBack(){if(wizStep>1){wizStep--;wizUI();}}
+function wizUI(){
+  for(let i=1;i<=3;i++){
+    document.getElementById('ws'+i).classList.toggle('active',i===wizStep);
+    document.getElementById('ws'+i).classList.toggle('hidden',i!==wizStep);
+  }
+  document.querySelectorAll('.wiz-step').forEach(s=>{
+    const n=+s.dataset.s;
+    s.classList.toggle('active',n===wizStep);
+    s.classList.toggle('done',n<wizStep);
+  });
+  document.getElementById('wl1').classList.toggle('done',wizStep>1);
+  document.getElementById('wl2').classList.toggle('done',wizStep>2);
+  document.getElementById('wiz-back').style.display=wizStep>1?'inline-flex':'none';
+  document.getElementById('wiz-next').textContent=wizStep===3?'✓ Simpan Kendaraan':'Lanjut →';
+}
+function saveVehicle(){
+  const id=document.getElementById('vid').value;
+  const data={
+    type:vType,
+    brand:gVal('vbrand'),model:gVal('vmodel').trim(),year:gVal('vyear'),color:gVal('vcolor').trim(),
+    plate:gVal('vplate').trim().toUpperCase(),owner:gVal('vowner'),
+    odo:+gVal('vodo')||0,engine:gVal('vengine').trim(),
+    buydate:gVal('vbuydate'),notes:gVal('vnotes').trim(),
+    stnk:gVal('vstnk'),stnk5:gVal('vstnk5'),pkb:+gVal('vpkb')||0,
+    tire:gVal('vtire'),oildate:gVal('voildate'),oilkm:+gVal('voilkm')||0,
+  };
+  if(id){const i=V.findIndex(x=>x.id===id);if(i>-1)V[i]={...V[i],...data};toast('Kendaraan diperbarui ✓');}
+  else{data.id=uid();data.created=new Date().toISOString();V.unshift(data);toast('Kendaraan ditambahkan ✓');}
+  set('vehicles',V);closeM('m-vehicle');render();
+}
+function delVehicle(id){
+  const v=V.find(x=>x.id===id);if(!v)return;
+  if(!confirm(`Hapus "${v.brand} ${v.model}"?\nSemua riwayat servis kendaraan ini juga akan dihapus.`))return;
+  V=V.filter(x=>x.id!==id);
+  S=S.filter(s=>s.vid!==id);
+  set('vehicles',V);set('services',S);
+  toast('Kendaraan dihapus');render();
+}
+function gVal(id){const e=document.getElementById(id);return e?e.value:'';}
+
+// ═══ DETAIL ═══
+function openDetail(id){
+  const v=V.find(x=>x.id===id);if(!v)return;
+  const vS=S.filter(s=>s.vid===id).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const sch=SCHED[v.type]||SCHED.Motor;
+  const st=status(v);
+  document.getElementById('m-detail-title').textContent=`${v.brand} ${v.model} ${v.year}`;
+  const stars='⭐'.repeat(5);
+  document.getElementById('m-detail-body').innerHTML=`
+    <div class="detail-sec">
+      <div class="detail-sec-title">Informasi Kendaraan</div>
+      <div class="detail-grid">
+        <div class="d-field"><label>Merek & Model</label><span>${v.brand} ${v.model}</span></div>
+        <div class="d-field"><label>Tahun & Warna</label><span>${v.year} — ${v.color||'—'}</span></div>
+        <div class="d-field"><label>Nomor Polisi</label><span style="font-family:monospace">${v.plate||'—'}</span></div>
+        <div class="d-field"><label>Pemilik</label><span>${v.owner}</span></div>
+        <div class="d-field"><label>Odometer</label><span>${Number(v.odo||0).toLocaleString('id')} km</span></div>
+        <div class="d-field"><label>Status</label><span class="status-badge ${st.lvl==='ok'?'sb-ok':st.lvl==='warn'?'sb-warn':st.lvl==='unknown'?'sb-unknown':'sb-urgent'}">${st.lvl==='ok'?'Kondisi Baik':st.lvl==='warn'?'Perlu Perhatian':st.lvl==='unknown'?'Tambahkan Servis Pertama':'Segera Servis'}</span></div>
+        ${v.engine?`<div class="d-field"><label>Nomor Mesin</label><span>${v.engine}</span></div>`:''}
+        ${v.buydate?`<div class="d-field"><label>Tanggal Beli</label><span>${fmtDate(v.buydate)}</span></div>`:''}
+        ${v.notes?`<div class="d-field" style="grid-column:1/-1"><label>Catatan</label><span>${v.notes}</span></div>`:''}
+      </div>
+    </div>
+    <div class="detail-sec">
+      <div class="detail-sec-title">Dokumen & Reminder</div>
+      <div class="detail-grid">
+        <div class="d-field"><label>Pajak STNK</label><span>${v.stnk?fmtDate(v.stnk):'—'}</span></div>
+        <div class="d-field"><label>STNK 5 Tahunan</label><span>${v.stnk5?fmtDate(v.stnk5):'—'}</span></div>
+        <div class="d-field"><label>PKB Tahun Lalu</label><span>${v.pkb?fmtRp(v.pkb):'—'}</span></div>
+        <div class="d-field"><label>Ban Dipasang</label><span>${v.tire?fmtDate(v.tire):'—'}</span></div>
+        <div class="d-field"><label>Terakhir Ganti Oli</label><span>${v.oildate?fmtDate(v.oildate)+' ('+Number(v.oilkm||0).toLocaleString('id')+' km)':'—'}</span></div>
+      </div>
+    </div>
+    <div class="detail-sec">
+      <div class="detail-sec-title">Jadwal Servis Standar — ${v.type}</div>
+      <table class="sched-table">
+        <tr><th>Jenis Servis</th><th>Setiap</th><th>Setiap</th></tr>
+        ${sch.map(s=>`<tr><td>${s.name}</td><td>${s.km.toLocaleString('id')} km</td><td>${s.months} bulan</td></tr>`).join('')}
+      </table>
+    </div>
+    <div class="detail-sec">
+      <div class="detail-sec-title">Riwayat Servis (${vS.length} catatan)</div>
+      ${vS.length===0
+        ?'<p style="color:var(--text-3);font-size:13px">Belum ada catatan servis untuk kendaraan ini.</p>'
+        :vS.slice(0,8).map(s=>`
+          <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+              <div>
+                <div style="font-size:13.5px;font-weight:600;color:var(--text-1)">${s.types||'Servis'}</div>
+                <div style="font-size:12px;color:var(--text-3);margin-top:3px">${fmtDate(s.date)} · ${Number(s.odo||0).toLocaleString('id')} km · ${s.ws||'—'}</div>
+                ${s.notes?`<div style="font-size:12px;color:var(--text-2);margin-top:3px;font-style:italic">${s.notes}</div>`:''}
+              </div>
+              <div style="text-align:right;flex-shrink:0">
+                <div style="font-size:14px;font-weight:700">Rp ${Number(s.cost||0).toLocaleString('id')}</div>
+              </div>
+            </div>
+          </div>`).join('')}
+    </div>
+    <div style="display:flex;gap:8px;margin-top:4px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-sm" onclick="closeM('m-detail');openServiceFor('${id}')">+ Catat Servis</button>
+      <button class="btn btn-ghost btn-sm" onclick="closeM('m-detail');editVehicle('${id}')">Edit Kendaraan</button>
+      <button class="btn btn-danger btn-sm" onclick="closeM('m-detail');delVehicle('${id}')">Hapus</button>
+    </div>`;
+  openM('m-detail');
+}
+
+// ═══ SERVICES ═══
+function openAddService(){
+  document.getElementById('sid').value='';
+  document.getElementById('m-service-title').textContent='Catat Servis';
+  document.getElementById('sv').value='';
+  document.getElementById('sdate').value=today();
+  document.getElementById('sodo').value='';
+  document.getElementById('sws').value='';
+  document.getElementById('scost').value='';
+  document.getElementById('snextkm').value='';
+  document.getElementById('snextdate').value='';
+  document.getElementById('snotes').value='';
+  document.querySelectorAll('.stype-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('lainnya-wrap').style.display='none';
+  document.getElementById('s-lainnya-text').value='';
+  openM('m-service');
+}
+function openServiceFor(vid){
+  openAddService();
+  document.getElementById('sv').value=vid;
+  const v=V.find(x=>x.id===vid);
+  if(v)document.getElementById('sodo').value=v.odo||'';
+}
+function togStype(b){b.classList.toggle('active');}
+function togLainnya(b){
+  b.classList.toggle('active');
+  const wrap=document.getElementById('lainnya-wrap');
+  const inp=document.getElementById('s-lainnya-text');
+  if(b.classList.contains('active')){
+    wrap.style.display='block';
+    inp.focus();
+  } else {
+    wrap.style.display='none';
+    inp.value='';
+  }
+}
+function updateLainnya(){
+  // nilai input lainnya diambil saat saveService()
+}
+function saveService(){
+  const vid=document.getElementById('sv').value;
+  if(!vid){toast('Pilih kendaraan terlebih dahulu');return;}
+  // Ambil semua jenis servis yang dipilih
+  const types=Array.from(document.querySelectorAll('.stype-btn.active')).map(b=>{
+    if(b.id==='btn-lainnya'){
+      const txt=document.getElementById('s-lainnya-text').value.trim();
+      return txt?txt:'Lainnya';
+    }
+    return b.textContent;
+  });
+  if(!types.length){toast('Pilih minimal satu jenis servis');return;}
+  const dt=document.getElementById('sdate').value;
+  if(!dt){toast('Isi tanggal servis');return;}
+  const id=document.getElementById('sid').value;
+  const odo=+document.getElementById('sodo').value||0;
+  const data={vid,date:dt,odo,types:types.join(', '),ws:gVal('sws').trim(),cost:+gVal('scost')||0,nextkm:+gVal('snextkm')||0,nextdate:gVal('snextdate'),notes:gVal('snotes').trim()};
+  if(id){const i=S.findIndex(s=>s.id===id);if(i>-1)S[i]={...S[i],...data};toast('Servis diperbarui ✓');}
+  else{data.id=uid();data.created=new Date().toISOString();S.unshift(data);
+    // update odo
+    const v=V.find(x=>x.id===vid);if(v&&odo>v.odo){v.odo=odo;set('vehicles',V);}
+    // Auto-update tanggal & km ganti oli di data kendaraan
+    if(v&&(data.types.includes('Ganti Oli')||data.types.includes('Ganti Filter Oli'))){
+      v.oildate=dt;v.oilkm=odo;set('vehicles',V);
+    }
+    toast('Servis dicatat ✓');}
+  set('services',S);closeM('m-service');render();
+}
+function editService(id){
+  const s=S.find(x=>x.id===id);if(!s)return;
+  document.getElementById('sid').value=id;
+  document.getElementById('m-service-title').textContent='Edit Servis';
+  gv('sv',s.vid);gv('sdate',s.date);gv('sodo',s.odo);gv('sws',s.ws);
+  gv('scost',s.cost);gv('snextkm',s.nextkm);gv('snextdate',s.nextdate);gv('snotes',s.notes);
+  const types=(s.types||'').split(', ');
+  const knownTypes=['Ganti Oli','Tune Up','Ganti Busi','Filter Udara','Servis Rem','Ganti Ban','Cek Aki','Ganti Rantai','Servis Injeksi','Ganti Filter Oli'];
+  document.querySelectorAll('.stype-btn').forEach(b=>{
+    if(b.id==='btn-lainnya'){
+      const hasOther=types.some(t=>!knownTypes.includes(t));
+      b.classList.toggle('active',hasOther);
+      if(hasOther){
+        document.getElementById('lainnya-wrap').style.display='block';
+        document.getElementById('s-lainnya-text').value=types.filter(t=>!knownTypes.includes(t)).join(', ');
+      }
+    } else {
+      b.classList.toggle('active',types.includes(b.textContent));
+    }
+  });
+  openM('m-service');
+}
+function delService(id){
+  if(!confirm('Hapus catatan servis ini?'))return;
+  S=S.filter(x=>x.id!==id);set('services',S);toast('Catatan dihapus');render();
+}
+function renderServices(){
+  const el=document.getElementById('slist');el.innerHTML='';
+  const fv=document.getElementById('fv').value;
+  const ft=document.getElementById('ft').value;
+  let list=[...S];
+  if(fv)list=list.filter(s=>s.vid===fv);
+  if(ft)list=list.filter(s=>s.types&&s.types.includes(ft));
+  list.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(!list.length){
+    el.innerHTML=`<div class="empty"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><h4>Belum ada catatan servis</h4><p>Mulai catat servis kendaraan keluarga</p><button class="btn btn-primary" onclick="openAddService()">+ Catat Servis</button><br/><br/><a href="panduan-servis-kendaraan.html" target="_blank" class="btn btn-ghost btn-sm" style="margin-top:8px">📖 Lihat Panduan Jadwal Servis</a></div>`;
+    return;
+  }
+  list.forEach((s,i)=>{
+    const v=V.find(x=>x.id===s.vid);
+    const d=document.createElement('div');d.className='list-item';d.style.animationDelay=(i*45)+'ms';
+    d.innerHTML=`
+      <div class="list-avatar la-amber"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div class="list-info">
+        <div class="list-name">${v?v.brand+' '+v.model:'—'}</div>
+        <div class="tag-wrap">${(s.types||'Servis').split(', ').map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="list-sub" style="margin-top:4px">${fmtDate(s.date)} · ${Number(s.odo||0).toLocaleString('id')} km · ${s.ws||'—'}</div>
+        ${s.notes?`<div class="list-sub" style="margin-top:2px;font-style:italic">${s.notes}</div>`:''}
+        ${s.nextkm||s.nextdate?`<div class="list-sub" style="margin-top:2px;color:var(--blue);font-weight:500">🔔 Servis berikutnya: ${s.nextkm?Number(s.nextkm).toLocaleString('id')+' km':''}${s.nextkm&&s.nextdate?' atau ':''}${s.nextdate?fmtDate(s.nextdate):''}</div>`:''}
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div class="list-meta">${s.cost?'Rp '+Number(s.cost).toLocaleString('id'):'—'}</div>
+        <div class="list-actions" style="margin-top:6px;justify-content:flex-end">
+          <button class="btn-icon" onclick="editService('${s.id}')" title="Edit"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="btn-icon danger" onclick="delService('${s.id}')" title="Hapus"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
+        </div>
+      </div>`;
+    el.appendChild(d);
+  });
+}
+
+// ═══ REMINDERS ═══
+function renderReminders(){
+  const el=document.getElementById('rlist');el.innerHTML='';
+  const items=[];const now=new Date();
+  V.forEach(v=>{
+    // STNK Pajak
+    if(v.stnk){const d=diffDays(now,new Date(v.stnk));items.push({icon:'📋',title:`Pajak STNK — ${v.brand} ${v.model}`,sub:`Pemilik: ${v.owner} · Jatuh tempo: ${fmtDate(v.stnk)}`,diff:d,type:'stnk'});}
+    // STNK 5yr
+    if(v.stnk5){const d=diffDays(now,new Date(v.stnk5));items.push({icon:'📋',title:`STNK 5 Tahunan — ${v.brand} ${v.model}`,sub:`Perlu ke Samsat · ${fmtDate(v.stnk5)}`,diff:d,type:'stnk5'});}
+    // Tires
+    if(v.tire){const age=Math.floor((now-new Date(v.tire))/(86400000*30));const max=v.type==='Motor'?36:60;const rem=(max-age)*30;if(rem<=365)items.push({icon:'🛞',title:`Ganti Ban — ${v.brand} ${v.model}`,sub:`Ban sudah ${age} bulan (batas ${max} bulan)`,diff:rem,type:'tire'});}
+    // Oil service
+    const st=status(v);
+    if(st.lvl!=='ok'){
+      const kmLeft=Math.max(0,(SCHED[v.type]||SCHED.Motor)[0].km-st.kmSince);
+      items.push({icon:'🔧',title:`Ganti Oli — ${v.brand} ${v.model}`,sub:`${st.kmSince.toLocaleString('id')} km sejak oli terakhir · ${st.lastTxt}`,diff:kmLeft>0?Math.round(kmLeft/10):-1,type:'oil',lvl:st.lvl});
+    }
+    // Next service reminder from service record
+    const vS=S.filter(s=>s.vid===v.id&&s.nextdate).sort((a,b)=>new Date(b.date)-new Date(a.date));
+    if(vS[0]&&vS[0].nextdate){const d=diffDays(now,new Date(vS[0].nextdate));if(d<=60)items.push({icon:'📅',title:`Servis Terjadwal — ${v.brand} ${v.model}`,sub:`Dijadwalkan: ${fmtDate(vS[0].nextdate)} · ${vS[0].ws||'—'}`,diff:d,type:'sched'});}
+  });
+  items.sort((a,b)=>a.diff-b.diff);
+  // update badge
+  const urgent=items.filter(x=>x.diff<0||x.lvl==='urgent').length;
+  const nb=document.getElementById('nb-rem');
+  nb.textContent=urgent;nb.classList.toggle('hidden',urgent===0);
+  if(!items.length){
+    el.innerHTML=`<div class="empty"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><h4>Semua aman! ✓</h4><p>Tidak ada reminder mendesak saat ini</p></div>`;
+    return;
+  }
+  items.forEach((item,i)=>{
+    const urg=item.diff<0||(item.lvl==='urgent')?'urgent':item.diff<=30?'warn':'ok';
+    const dc=urg==='ok'?'#059669':urg==='warn'?'#D97706':'#DC2626';
+    const rc=urg==='ok'?'rd-ok':urg==='warn'?'rd-warn':'rd-urgent';
+    const dt=item.diff<0?'Lewat jatuh tempo!':item.diff===0?'Hari ini!':item.diff+' hari lagi';
+    const d=document.createElement('div');d.className='rem-item';d.style.animationDelay=(i*50)+'ms';
+    d.innerHTML=`
+      <div class="rem-dot" style="background:${dc}"></div>
+      <div style="font-size:20px">${item.icon}</div>
+      <div class="rem-info"><div class="rem-title">${item.title}</div><div class="rem-sub">${item.sub}</div></div>
+      <span class="rem-date ${rc}">${dt}</span>`;
+    el.appendChild(d);
+  });
+}
+
+// ═══ WORKSHOPS ═══
+function openAddWorkshop(){
+  document.getElementById('wid').value='';
+  document.getElementById('m-ws-title').textContent='Tambah Bengkel';
+  ['wname','wphone','waddr','whours','wnotes'].forEach(id=>gv(id,''));
+  document.getElementById('wspec').value='Motor & Mobil';
+  document.getElementById('wrating').value='5';
+  openM('m-workshop');
+}
+function editWorkshop(id){
+  const w=W.find(x=>x.id===id);if(!w)return;
+  document.getElementById('wid').value=id;
+  document.getElementById('m-ws-title').textContent='Edit Bengkel';
+  gv('wname',w.name);gv('wphone',w.phone);gv('waddr',w.addr);
+  gv('whours',w.hours);gv('wnotes',w.notes);
+  gv('wspec',w.spec);gv('wrating',w.rating||'5');
+  openM('m-workshop');
+}
+function saveWorkshop(){
+  const name=gVal('wname').trim();
+  if(!name){toast('Isi nama bengkel');return;}
+  const id=document.getElementById('wid').value;
+  const data={name,phone:gVal('wphone').trim(),addr:gVal('waddr').trim(),spec:gVal('wspec'),hours:gVal('whours').trim(),rating:gVal('wrating'),notes:gVal('wnotes').trim()};
+  if(id){const i=W.findIndex(w=>w.id===id);if(i>-1)W[i]={...W[i],...data};toast('Bengkel diperbarui ✓');}
+  else{data.id=uid();W.unshift(data);toast('Bengkel ditambahkan ✓');}
+  set('workshops',W);closeM('m-workshop');renderWorkshops();
+}
+function delWorkshop(id){
+  if(!confirm('Hapus bengkel ini?'))return;
+  W=W.filter(x=>x.id!==id);set('workshops',W);toast('Bengkel dihapus');renderWorkshops();
+}
+function renderWorkshops(){
+  const el=document.getElementById('wlist');el.innerHTML='';
+  if(!W.length){
+    el.innerHTML=`<div class="empty"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><h4>Belum ada bengkel</h4><p>Tambahkan bengkel favorit keluarga</p><button class="btn btn-primary" onclick="openAddWorkshop()">+ Tambah Bengkel</button></div>`;
+    return;
+  }
+  const stars=r=>'⭐'.repeat(+r||0);
+  W.forEach((w,i)=>{
+    const d=document.createElement('div');d.className='list-item';d.style.animationDelay=(i*45)+'ms';
+    d.innerHTML=`
+      <div class="list-avatar la-teal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="list-info">
+        <div class="list-name">${w.name} <span style="font-size:12px">${stars(w.rating)}</span></div>
+        <div class="list-sub">${w.spec} · ${w.phone||'—'} · ${w.hours||'—'}</div>
+        ${w.addr?`<div class="list-sub">📍 ${w.addr}</div>`:''}
+        ${w.notes?`<div class="list-sub" style="font-style:italic">${w.notes}</div>`:''}
+      </div>
+      <div class="list-actions">
+        ${w.phone?`<a class="btn-icon" href="tel:${w.phone}" onclick="event.stopPropagation()" title="Telepon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.46 2.68h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 10a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92z"/></svg></a>`:''}
+        <button class="btn-icon" onclick="event.stopPropagation();editWorkshop('${w.id}')" title="Edit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn-icon danger" onclick="event.stopPropagation();delWorkshop('${w.id}')" title="Hapus"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button>
+      </div>`;
+    el.appendChild(d);
+  });
+}
+
+// ═══ FILLS ═══
+function fillVehicleSelects(){
+  ['sv','fv'].forEach(id=>{
+    const sel=document.getElementById(id);const cur=sel.value;
+    sel.innerHTML=id==='fv'?'<option value="">Semua Kendaraan</option>':'<option value="">-- Pilih Kendaraan --</option>';
+    V.forEach(v=>{const o=document.createElement('option');o.value=v.id;o.textContent=`${v.brand} ${v.model} (${v.owner})`;sel.appendChild(o);});
+    if(cur)sel.value=cur;
+  });
+}
+
+// ═══ NOTIF ═══
+function checkNotif(){
+  const now=new Date();let has=false;
+  V.forEach(v=>{
+    if(v.stnk&&diffDays(now,new Date(v.stnk))<=30)has=true;
+    if(status(v).lvl!=='ok')has=true;
+  });
+  document.getElementById('notif-badge').classList.toggle('hidden',!has);
+}
+function openNotif(){
+  const now=new Date();const items=[];
+  V.forEach(v=>{
+    const st=status(v);
+    if(st.lvl!=='ok')items.push({icon:'🔧',t:`${v.brand} ${v.model} perlu ganti oli`,s:st.kmSince.toLocaleString('id')+' km sejak servis terakhir'});
+    if(v.stnk){const d=diffDays(now,new Date(v.stnk));if(d<=30)items.push({icon:'📋',t:`Pajak STNK ${v.brand} ${v.model}`,s:d<0?'Sudah lewat!':d+' hari lagi'});}
+  });
+  document.getElementById('m-notif-body').innerHTML=!items.length
+    ?'<p style="text-align:center;color:var(--text-3);padding:24px">Tidak ada notifikasi saat ini ✓</p>'
+    :items.map(n=>`<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)"><span style="font-size:20px">${n.icon}</span><div><div style="font-size:13.5px;font-weight:500">${n.t}</div><div style="font-size:12px;color:var(--text-3);margin-top:2px">${n.s}</div></div></div>`).join('');
+  openM('m-notif');
+}
+
+// ═══ GUIDED TOUR ═══
+const TOUR=[
+  {target:null,title:'👋 Selamat Datang!',desc:'Ini adalah aplikasi Servis Kendaraan Keluarga Imam. Mari saya tunjukkan cara pakainya — hanya 7 langkah singkat!'},
+  {target:'[data-page="dashboard"]',title:'🏠 Dashboard',desc:'Halaman utama berisi ringkasan kondisi semua kendaraan keluarga, statistik, dan kartu status masing-masing kendaraan.'},
+  {target:'[data-page="vehicles"]',title:'🚗 Menu Kendaraan',desc:'Tambah, edit, dan hapus kendaraan keluarga. Setiap kendaraan menyimpan detail lengkap termasuk dokumen dan odometer.'},
+  {target:'[data-page="services"]',title:'🔧 Riwayat Servis',desc:'Catat setiap servis yang dilakukan — jenis servis, bengkel, biaya, dan jadwal servis berikutnya.'},
+  {target:'[data-page="reminders"]',title:'🔔 Reminder',desc:'Pengingat otomatis untuk pajak STNK, ganti ban, ganti oli, dan servis terjadwal lainnya berdasarkan km dan tanggal.'},
+  {target:'[data-page="workshops"]',title:'🏠 Bengkel Favorit',desc:'Simpan daftar bengkel favorit dengan kontak, alamat, jam buka, dan rating. Ada tombol telepon langsung!'},
+  {target:'.help-btn',title:'❓ Tombol Bantuan',desc:'Tombol ini selalu ada di pojok kanan bawah layar. Klik kapan saja untuk mengulang panduan ini dari awal.'},
+];
+let tStep=0;
+function startTour(){
+  tStep=0;
+  const mask=document.getElementById('tour-mask');
+  mask.classList.add('active');
+  // build dots
+  const dots=document.getElementById('tour-dots');
+  dots.innerHTML=TOUR.map((_,i)=>`<div class="tour-dot${i===0?' on':''}" id="td${i}"></div>`).join('');
+  document.getElementById('tour-popup').style.display='block';
+  renderTour();
+}
+function renderTour(){
+  const step=TOUR[tStep];
+  // dots
+  document.querySelectorAll('.tour-dot').forEach((d,i)=>d.classList.toggle('on',i===tStep));
+  document.getElementById('t-badge').textContent=(tStep+1)+' dari '+TOUR.length;
+  document.getElementById('t-title').textContent=step.title;
+  document.getElementById('t-desc').textContent=step.desc;
+  document.getElementById('t-back').style.visibility=tStep===0?'hidden':'visible';
+  document.getElementById('t-next').textContent=tStep===TOUR.length-1?'Selesai ✓':'Lanjut →';
+  positionTour(step);
+}
+function positionTour(step){
+  const ring=document.getElementById('tour-ring');
+  const popup=document.getElementById('tour-popup');
+  const P=12;// padding around highlight
+  // panels
+  const tp=document.getElementById('tp-top');
+  const bp=document.getElementById('tp-bot');
+  const lp=document.getElementById('tp-left');
+  const rp=document.getElementById('tp-right');
+  const W2=window.innerWidth,H2=window.innerHeight;
+  if(!step.target){
+    // full overlay — no spotlight
+    ring.style.display='none';
+    tp.style.cssText=`top:0;left:0;right:0;height:100%`;
+    bp.style.cssText=`display:none`;lp.style.cssText=`display:none`;rp.style.cssText=`display:none`;
+    // center popup
+    const pw=Math.min(320,W2-32);
+    popup.style.cssText=`display:block;width:${pw}px;top:50%;left:50%;transform:translate(-50%,-50%)`;
+    return;
+  }
+  const el=document.querySelector(step.target);
+  if(!el){
+    ring.style.display='none';
+    tp.style.cssText=`top:0;left:0;right:0;height:0`;
+    bp.style.cssText=`bottom:0;left:0;right:0;height:0`;
+    lp.style.cssText=`display:none`;rp.style.cssText=`display:none`;
+    popup.style.cssText=`display:block;width:310px;top:50%;left:50%;transform:translate(-50%,-50%)`;
+    return;
+  }
+  el.scrollIntoView({behavior:'smooth',block:'nearest'});
+  setTimeout(()=>{
+    const r=el.getBoundingClientRect();
+    const rx=r.left-P, ry=r.top-P, rw=r.width+P*2, rh=r.height+P*2;
+    // ring
+    ring.style.cssText=`display:block;left:${rx}px;top:${ry}px;width:${rw}px;height:${rh}px;`;
+    // panels
+    tp.style.cssText=`display:block;top:0;left:0;right:0;height:${ry}px;`;
+    bp.style.cssText=`display:block;top:${ry+rh}px;left:0;right:0;bottom:0;`;
+    lp.style.cssText=`display:block;top:${ry}px;left:0;width:${rx}px;height:${rh}px;`;
+    rp.style.cssText=`display:block;top:${ry}px;left:${rx+rw}px;right:0;height:${rh}px;`;
+    // popup position
+    const pw=Math.min(320,W2-24);
+    let px,py;
+    // try right of element
+    if(rx+rw+16+pw<W2){px=rx+rw+16;py=Math.max(10,ry+rh/2-90);}
+    // try left
+    else if(rx-pw-16>0){px=rx-pw-16;py=Math.max(10,ry+rh/2-90);}
+    // try below
+    else if(ry+rh+16+180<H2){px=Math.max(10,W2/2-pw/2);py=ry+rh+16;}
+    // above
+    else{px=Math.max(10,W2/2-pw/2);py=Math.max(10,ry-180-16);}
+    // clamp
+    px=Math.max(10,Math.min(px,W2-pw-10));
+    py=Math.max(10,Math.min(py,H2-200));
+    popup.style.cssText=`display:block;width:${pw}px;top:${py}px;left:${px}px;transform:none;`;
+  },150);
+}
+function nextTour(){tStep++;if(tStep>=TOUR.length){endTour();return;}renderTour();}
+function prevTour(){if(tStep>0){tStep--;renderTour();}}
+function endTour(){
+  document.getElementById('tour-mask').classList.remove('active');
+  document.getElementById('tour-popup').style.display='none';
+  document.getElementById('tour-ring').style.display='none';
+  ['tp-top','tp-bot','tp-left','tp-right'].forEach(id=>document.getElementById(id).style.cssText='display:none');
+  localStorage.setItem('ki_tour_done','1');
+}
+
+// ═══ MODAL HELPERS ═══
+function openM(id){document.getElementById(id).classList.remove('hidden');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById(id).classList.add('hidden');document.body.style.overflow='';}
+function closeBD(e,id){if(e.target===document.getElementById(id))closeM(id);}
+
+// ═══ TOAST ═══
+let _tt;
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');
+  requestAnimationFrame(()=>t.classList.add('show'));
+  clearTimeout(_tt);_tt=setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.classList.add('hidden'),300);},2600);
+}
+
+// ═══ UTILS ═══
+function fmtDate(s){if(!s)return'—';return new Date(s).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'});}
+function fmtRp(n){if(!n||n===0)return'—';return'Rp '+Number(n).toLocaleString('id');}
+function diffDays(a,b){return Math.round((b-a)/86400000);}
+function today(){return new Date().toISOString().split('T')[0];}
+
+// ═══ KEYBOARD ═══
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    ['m-vehicle','m-service','m-workshop','m-detail','m-notif'].forEach(closeM);
+    endTour();
+  }
+});
+
+// ═══ AUTO LOGIN ═══
+window.addEventListener('DOMContentLoaded',()=>{
+  if(sessionStorage.getItem('ki_auth')==='1')boot();
+});
+</script>
+</body>
+</html>

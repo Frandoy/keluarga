@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Panduan Servis Kendaraan Lengkap — Keluarga Imam</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --blue:#2563EB;--blue-d:#1D4ED8;--blue-l:#EFF6FF;--blue-m:#BFDBFE;
+  --teal:#059669;--teal-l:#ECFDF5;--teal-m:#6EE7B7;
+  --amber:#D97706;--amber-l:#FFFBEB;
+  --red:#DC2626;--red-l:#FEF2F2;
+  --purple:#7C3AED;--purple-l:#F5F3FF;
+  --orange:#EA580C;--orange-l:#FFF7ED;
+  --gray:#64748B;--gray-l:#F8FAFC;
+  --bg:#F1F5F9;--surface:#FFFFFF;
+  --border:#E2E8F0;--border-dark:#CBD5E1;
+  --text-1:#0F172A;--text-2:#334155;--text-3:#64748B;--text-4:#94A3B8;
+  --r:10px;--r-sm:6px;--r-lg:16px;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text-1)}
+a{color:inherit;text-decoration:none}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#1e3a8a 0%,#1D4ED8 45%,#059669 100%);padding:36px 0 32px}
+.hero-inner{max-width:980px;margin:0 auto;padding:0 24px;color:white}
+.hero-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.7);margin-bottom:18px;transition:color .15s}
+.hero-back:hover{color:white}
+.hero-eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.hero-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;backdrop-filter:blur(4px)}
+.hero h1{font-size:clamp(22px,3vw,34px);font-weight:800;line-height:1.2;letter-spacing:-.4px;margin-bottom:10px}
+.hero-desc{font-size:14px;opacity:.8;max-width:540px;line-height:1.7;margin-bottom:18px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px}
+.hero-pill{display:flex;align-items:center;gap:5px;font-size:12px;opacity:.75;background:rgba(255,255,255,.1);padding:4px 10px;border-radius:20px}
+
+/* ── LAYOUT ── */
+.wrap{max-width:980px;margin:0 auto;padding:0 24px 60px}
+
+/* ── TAB NAV ── */
+.tab-nav{display:flex;background:var(--surface);border-radius:var(--r-lg);padding:6px;gap:4px;margin:24px 0 20px;box-shadow:var(--shadow);overflow-x:auto;scrollbar-width:none}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{flex:1;min-width:fit-content;padding:9px 14px;font-size:12.5px;font-weight:600;color:var(--text-3);border-radius:var(--r-sm);transition:all .15s;white-space:nowrap;text-align:center}
+.tab-btn:hover{color:var(--text-1);background:var(--bg)}
+.tab-btn.active{background:var(--blue);color:white;box-shadow:0 2px 8px rgba(37,99,235,.3)}
+.tab-content{display:none}
+.tab-content.active{display:block;animation:fadeUp .25s ease}
+
+/* ── SECTION HEADER ── */
+.sec-hdr{margin-bottom:20px}
+.sec-hdr h2{font-size:18px;font-weight:800;color:var(--text-1);letter-spacing:-.3px;margin-bottom:3px}
+.sec-hdr p{font-size:13px;color:var(--text-3);line-height:1.6}
+
+/* ── QUICK INFO STRIP ── */
+.quick-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:20px}
+.qs-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.qs-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-4);margin-bottom:5px}
+.qs-val{font-size:14px;font-weight:700;color:var(--text-1);line-height:1.4}
+.qs-note{font-size:11.5px;color:var(--text-3);margin-top:3px}
+
+/* ── INFO BOX ── */
+.info-box{border-radius:var(--r);padding:14px 16px;margin-bottom:18px;display:flex;gap:12px;border-left:4px solid}
+.ib-blue{background:var(--blue-l);border-color:var(--blue)}
+.ib-amber{background:var(--amber-l);border-color:var(--amber)}
+.ib-red{background:var(--red-l);border-color:var(--red)}
+.ib-teal{background:var(--teal-l);border-color:var(--teal)}
+.ib-purple{background:var(--purple-l);border-color:var(--purple)}
+.ib-icon{font-size:20px;flex-shrink:0;line-height:1}
+.ib-body strong{font-size:13px;font-weight:700;color:var(--text-1);display:block;margin-bottom:4px}
+.ib-body p{font-size:12.5px;color:var(--text-2);line-height:1.7}
+.ib-body p b{font-weight:600;color:var(--text-1)}
+
+/* ── SERVICE TABLE ── */
+.tbl-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px}
+.tbl-title-bar{padding:14px 20px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--gray-l)}
+.tbl-title{font-size:14px;font-weight:700;color:var(--text-1)}
+.tbl-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.b-blue{background:var(--blue-l);color:var(--blue)}
+.b-teal{background:var(--teal-l);color:var(--teal)}
+.b-amber{background:var(--amber-l);color:var(--amber)}
+.b-red{background:var(--red-l);color:var(--red)}
+.b-purple{background:var(--purple-l);color:var(--purple)}
+.b-orange{background:var(--orange-l);color:var(--orange)}
+
+/* ── TABLE STYLES ── */
+table{width:100%;border-collapse:collapse}
+.col-item{width:28%}
+.col-km{width:15%}
+.col-bln{width:11%}
+.col-prio{width:10%}
+.col-note{width:36%}
+thead tr{background:#F8FAFC}
+thead th{padding:10px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-4);text-align:left;border-bottom:1px solid var(--border)}
+tbody td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;font-size:13px}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#FAFBFD}
+.td-name{font-weight:600;color:var(--text-1);line-height:1.4}
+.td-name small{font-weight:400;color:var(--text-3);display:block;font-size:11.5px;margin-top:2px}
+.td-km{font-weight:700;color:var(--blue);font-size:13px}
+.td-bln{color:var(--text-2);font-weight:500}
+.td-note-text{color:var(--text-3);font-size:12px;line-height:1.55}
+
+/* PRIORITY PILL */
+.prio{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:20px;white-space:nowrap;display:inline-block}
+.p-wajib{background:#FEE2E2;color:#991B1B}
+.p-penting{background:#FEF3C7;color:#92400E}
+.p-rutin{background:#D1FAE5;color:#065F46}
+.p-kritis{background:#1e3a8a;color:white}
+
+/* ── CATEGORY LABEL ── */
+.cat-row{background:linear-gradient(90deg,var(--blue-l),transparent);border-left:3px solid var(--blue);padding:8px 14px;font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.03em;text-transform:uppercase}
+.cat-row-teal{background:linear-gradient(90deg,var(--teal-l),transparent);border-color:var(--teal);color:var(--teal)}
+.cat-row-amber{background:linear-gradient(90deg,var(--amber-l),transparent);border-color:var(--amber);color:var(--amber)}
+.cat-row-red{background:linear-gradient(90deg,var(--red-l),transparent);border-color:var(--red);color:var(--red)}
+.cat-row-purple{background:linear-gradient(90deg,var(--purple-l),transparent);border-color:var(--purple);color:var(--purple)}
+
+/* ── CHECKLIST ── */
+.checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.cl-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.cl-head{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--gray-l)}
+.cl-head-title{font-size:13px;font-weight:700;color:var(--text-1)}
+.cl-head-sub{font-size:11.5px;color:var(--text-3);margin-top:2px}
+.cl-body{padding:0}
+.cl-item{display:flex;align-items:flex-start;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text-2)}
+.cl-item:last-child{border-bottom:none}
+.cl-check{width:18px;height:18px;border-radius:50%;background:var(--teal-l);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:800;margin-top:1px}
+.cl-item b{color:var(--text-1);font-weight:600}
+
+/* ── TANDA KERUSAKAN ── */
+.symptom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px}
+.sym-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.sym-head{padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.sym-icon{font-size:18px}
+.sym-title{font-size:13px;font-weight:700;color:var(--text-1)}
+.sym-sev{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:auto}
+.sev-kritis{background:var(--red-l);color:var(--red)}
+.sev-penting{background:var(--amber-l);color:var(--amber)}
+.sev-info{background:var(--blue-l);color:var(--blue)}
+.sym-body{padding:10px 14px}
+.sym-row{font-size:12px;color:var(--text-2);padding:4px 0;border-bottom:1px dotted var(--border);display:flex;gap:6px;line-height:1.5}
+.sym-row:last-child{border-bottom:none}
+.sym-row::before{content:"→";color:var(--text-4);flex-shrink:0}
+
+/* ── OLI GUIDE ── */
+.oli-explain{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:20px;box-shadow:var(--shadow)}
+.oli-explain-head{padding:14px 20px;background:linear-gradient(90deg,#1e3a8a,var(--blue));color:white}
+.oli-explain-head h3{font-size:14px;font-weight:700;margin-bottom:2px}
+.oli-explain-head p{font-size:12px;opacity:.8}
+.oli-code-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0;border-top:1px solid var(--border)}
+.oli-code-item{padding:14px 18px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.oli-code-item:nth-child(even){background:#FAFBFD}
+.oli-code{font-size:16px;font-weight:800;color:var(--blue);letter-spacing:-.3px;margin-bottom:4px;font-family:monospace}
+.oli-code-desc{font-size:12px;color:var(--text-2);line-height:1.55}
+.oli-code-ex{font-size:11px;color:var(--text-4);margin-top:3px}
+
+.oli-spec-table{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:20px;box-shadow:var(--shadow)}
+
+/* ── SPACING ── */
+.mt-4{margin-top:16px}
+.mb-4{margin-bottom:16px}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:720px){
+  .checklist-grid{grid-template-columns:1fr}
+  .quick-strip{grid-template-columns:1fr 1fr}
+  thead th:nth-child(4),tbody td:nth-child(4){display:none}
+  .col-note{width:30%}
+  .hero h1{font-size:20px}
+  .tab-btn{font-size:11.5px;padding:8px 10px}
+}
+@media(max-width:480px){
+  .wrap{padding:0 12px 40px}
+  .hero-inner{padding:0 12px}
+  thead th:nth-child(3),tbody td:nth-child(3){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <a href="index.html" class="hero-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Kembali ke Aplikasi
+    </a>
+    <div class="hero-eyebrow">
+      <span class="hero-tag">📖 Modul Referensi Servis</span>
+    </div>
+    <h1>Panduan Servis Kendaraan<br/>Motor & Mobil — Lengkap</h1>
+    <p class="hero-desc">Jadwal perawatan berkala resmi berdasarkan standar pabrikan Honda, Yamaha, Toyota, Daihatsu. Panduan oli, checklist perjalanan, dan tanda-tanda kerusakan kendaraan.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">✅ Standar manual resmi pabrikan</span>
+      <span class="hero-pill">🇮🇩 Disesuaikan kondisi Indonesia</span>
+      <span class="hero-pill">🔄 Diperbarui 2025</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="tab(this,'t1')">🛵 Motor Matic</button>
+  <button class="tab-btn" onclick="tab(this,'t2')">🏍️ Motor Sport & Bebek</button>
+  <button class="tab-btn" onclick="tab(this,'t3')">🚗 Mobil Bensin</button>
+  <button class="tab-btn" onclick="tab(this,'t4')">🚙 SUV & Diesel</button>
+  <button class="tab-btn" onclick="tab(this,'t5')">🛢️ Panduan Oli</button>
+  <button class="tab-btn" onclick="tab(this,'t6')">✅ Checklist & Gejala</button>
+</div>
+
+<!-- ════════════════════════════════════
+     TAB 1 — MOTOR MATIC
+════════════════════════════════════ -->
+<div id="t1" class="tab-content active">
+
+  <div class="sec-hdr">
+    <h2>🛵 Jadwal Servis Motor Matic</h2>
+    <p>Honda Beat · Vario 125/150/160 · Scoopy · PCX 150/160 · ADV 160 &nbsp;|&nbsp; Yamaha Mio · NMAX · Aerox · Lexi &nbsp;|&nbsp; Suzuki Address</p>
+  </div>
+
+  <div class="quick-strip">
+    <div class="qs-card">
+      <div class="qs-label">⚡ Servis Pertama</div>
+      <div class="qs-val">500–1.000 km</div>
+      <div class="qs-note">Atau 1 bulan. Gratis di AHASS/Yamaha resmi</div>
+    </div>
+    <div class="qs-card">
+      <div class="qs-label">🛢️ Ganti Oli Rutin</div>
+      <div class="qs-val">2.000–3.000 km</div>
+      <div class="qs-note">Atau 2 bulan — standar Indonesia. 3 bulan sudah hitam!</div>
+    </div>
+    <div class="qs-card">
+      <div class="qs-label">⚙️ Servis CVT</div>
+      <div class="qs-val">8.000–10.000 km</div>
+      <div class="qs-note">V-belt, roller, per CVT, mangkok CVT</div>
+    </div>
+    <div class="qs-card">
+      <div class="qs-label">🔧 Tune Up Besar</div>
+      <div class="qs-val">24.000 km / 2 tahun</div>
+      <div class="qs-note">Setel klep, injeksi, ganti semua filter</div>
+    </div>
+  </div>
+
+  <div class="info-box ib-blue">
+    <div class="ib-icon">ℹ️</div>
+    <div class="ib-body">
+      <strong>Cara Membaca Tabel Ini</strong>
+      <p>Lakukan servis berdasarkan <b>mana yang lebih dahulu tercapai</b> — km ATAU bulan. Contoh: <b>"2.000 km / 3 bulan"</b> artinya servis saat odometer mencapai 2.000 km ATAU sudah 3 bulan sejak servis terakhir, mana yang lebih dulu terjadi.</p>
+    </div>
+  </div>
+
+  <div class="tbl-card">
+    <div class="tbl-title-bar">
+      <div class="tbl-title">Jadwal Lengkap Perawatan Motor Matic</div>
+      <span class="tbl-badge b-blue">Standar AHASS & Yamaha Resmi</span>
+    </div>
+    <table>
+      <colgroup><col class="col-item"/><col class="col-km"/><col class="col-bln"/><col class="col-prio"/><col class="col-note"/></colgroup>
+      <thead><tr><th>Komponen / Pekerjaan</th><th>Interval KM</th><th>Bulan</th><th>Prioritas</th><th>Catatan Teknis</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" class="cat-row">🛢️ SISTEM PELUMASAN</td></tr>
+        <tr>
+          <td><div class="td-name">Ganti Oli Mesin<small>Pelumasan utama mesin</small></div></td>
+          <td class="td-km">2.000–3.000 km</td><td class="td-bln">2 bln</td>
+          <td><span class="prio p-wajib">WAJIB</span></td>
+          <td class="td-note-text">Gunakan oli <b>JASO MB</b> untuk matic (bukan JASO MA). Kapasitas ±800ml–1L. SAE 10W-30 atau 10W-40. <b>Standar Indonesia: 2 bulan atau 2.000 km</b> — mana yang lebih dahulu. Kondisi macet: 6 minggu sudah hitam!</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Cek Level Oli Mesin<small>Rutin harian / mingguan</small></div></td>
+          <td class="td-km">Setiap saat</td><td class="td-bln">—</td>
+          <td><span class="prio p-wajib">WAJIB</span></td>
+          <td class="td-note-text">Cek via sight glass atau dipstick. Level harus antara MIN–MAX. Jangan tunggu kurang dulu</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Cek & Ganti Oli Gardan<small>Pelumas transmisi CVT</small></div></td>
+          <td class="td-km">4.000 km / ganti 8.000 km</td><td class="td-bln">4 bln</td>
+          <td><span class="prio p-wajib">WAJIB</span></td>
+          <td class="td-note-text">Cek warna. Hitam pekat = harus ganti. Kapasitas ±100–150ml. Gunakan gear oil 80W-90</td>
+        </tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-teal">⚙️ SISTEM CVT & TRANSMISI</td></tr>
+        <tr>
+          <td><div class="td-name">Servis CVT (Bersihkan)<small>Roller, per, mangkok CVT</small></div></td>
+          <td class="td-km">8.000–10.000 km</td><td class="td-bln">12 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Bersihkan debu kampas kopling di dalam CVT. Cek kondisi roller dan per sentrifugal</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Roller CVT<small>Komponen transmisi otomatis</small></div></td>
+          <td class="td-km">16.000–20.000 km</td><td class="td-bln">24 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ganti jika sudah oval/peyang. Berat roller harus sesuai spek asli. Jangan ganti berat sembarangan</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti V-Belt<small>Sabuk penggerak CVT</small></div></td>
+          <td class="td-km">20.000–25.000 km</td><td class="td-bln">24 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ganti jika ada retakan halus meski belum putus. V-belt putus di jalan = motor tidak bisa jalan sama sekali</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Per CVT (Pulley)<small>Per primer & sekunder</small></div></td>
+          <td class="td-km">20.000–30.000 km</td><td class="td-bln">—</td>
+          <td><span class="prio p-rutin">RUTIN</span></td>
+          <td class="td-note-text">Ganti jika terasa akselerasi loyo atau tidak responsif. Biasanya bersamaan dengan V-belt</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Kampas Kopling CVT<small>Shoes kopling sentrifugal</small></div></td>
+          <td class="td-km">20.000–25.000 km</td><td class="td-bln">—</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ganti jika terasa slip saat akselerasi atau ada bau hangus dari CVT</td>
+        </tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-amber">🔥 SISTEM PEMBAKARAN & UDARA</td></tr>
+        <tr>
+          <td><div class="td-name">Cek Busi<small>Sistem pengapian</small></div></td>
+          <td class="td-km">4.000 km</td><td class="td-bln">4 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Cek warna elektroda: coklat muda = normal, hitam = campuran terlalu kaya, putih = terlalu kurus. Gap busi: 0.6–0.7mm</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Busi<small>NGK, Denso, Iridium</small></div></td>
+          <td class="td-km">8.000–12.000 km</td><td class="td-bln">12 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Standar: NGK CPR8EA-9 (Beat/Vario). Iridium: bisa 20.000 km. Jangan pakai busi tidak sesuai spek</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Bersihkan Filter Udara<small>Saringan udara mesin</small></div></td>
+          <td class="td-km">4.000 km</td><td class="td-bln">3 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Tiup dari dalam ke luar dengan kompresor. JANGAN dicuci untuk filter tipe kering (kertas/busa kering)</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Filter Udara<small>Penggantian total</small></div></td>
+          <td class="td-km">12.000–16.000 km</td><td class="td-bln">12 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Lebih cepat jika sering di jalan berdebu/konstruksi. Filter kotor = mesin boros dan tenaga drop</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Bersihkan Throttle Body / ISC<small>Sistem injeksi PGM-FI/FI</small></div></td>
+          <td class="td-km">8.000–12.000 km</td><td class="td-bln">12 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Khusus motor injeksi. Bersihkan Idle Speed Control (ISC) dan throttle body. Cegah tarikan berat dan brebet</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Setel Klep Mesin<small>Valve clearance</small></div></td>
+          <td class="td-km">16.000–24.000 km</td><td class="td-bln">18–24 bln</td>
+          <td><span class="prio p-rutin">RUTIN</span></td>
+          <td class="td-note-text">Lakukan di bengkel resmi dengan feeler gauge. Klep terlalu rapat = mesin overheat. Terlalu renggang = berisik</td>
+        </tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-red">🛑 SISTEM REM & KESELAMATAN</td></tr>
+        <tr>
+          <td><div class="td-name">Cek & Setel Rem<small>Rem depan & belakang</small></div></td>
+          <td class="td-km">Setiap servis</td><td class="td-bln">2 bln</td>
+          <td><span class="prio p-wajib">WAJIB</span></td>
+          <td class="td-note-text">Cek jarak main tuas rem. Rem belakang: 2–3cm, rem depan: 10–20mm. Cek getaran saat ngerem</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Kampas Rem Depan<small>Cakram (disc brake)</small></div></td>
+          <td class="td-km">15.000–20.000 km</td><td class="td-bln">—</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ganti jika ketebalan < 2mm atau terdengar bunyi decit. Jangan tunggu habis total karena merusak disc</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Kampas Rem Belakang<small>Tromol (drum brake)</small></div></td>
+          <td class="td-km">10.000–15.000 km</td><td class="td-bln">—</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ganti jika indikator keausan sudah menyentuh batas. Tromol: cek dari lubang inspeksi</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Minyak Rem (CBS/ABS)<small>Brake fluid DOT 3/4</small></div></td>
+          <td class="td-km">20.000 km</td><td class="td-bln">24 bln</td>
+          <td><span class="prio p-rutin">RUTIN</span></td>
+          <td class="td-note-text">Hanya untuk matic bertipe CBS atau ABS (PCX, Vario 160, ADV). Gunakan DOT 3 atau DOT 4</td>
+        </tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-purple">🔵 BAN & RODA</td></tr>
+        <tr>
+          <td><div class="td-name">Cek Tekanan Ban<small>Rutin bulanan</small></div></td>
+          <td class="td-km">Setiap bulan</td><td class="td-bln">1 bln</td>
+          <td><span class="prio p-wajib">WAJIB</span></td>
+          <td class="td-note-text">Depan: 29–32 psi, Belakang: 33–36 psi (berbeda tiap model — cek stiker di rangka). Ukur saat ban dingin</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Ban Depan<small>Ukuran sesuai spek asli</small></div></td>
+          <td class="td-km">15.000–20.000 km</td><td class="td-bln">36 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ganti jika alur ban (TWI) sudah rata, ban menonjol, atau retak di dinding ban. Jangan tunggu gundul</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Ganti Ban Belakang<small>Lebih cepat aus dari depan</small></div></td>
+          <td class="td-km">10.000–15.000 km</td><td class="td-bln">30 bln</td>
+          <td><span class="prio p-penting">PENTING</span></td>
+          <td class="td-note-text">Ban belakang menanggung beban lebih berat. Ganti sesuai ukuran asli. IRC, FDR, atau Corsa cocok untuk matic</td>
+        </tr>
+
+        <tr><td colspan="5" class="cat-row">⚡ KELISTRIKAN & LAINNYA</td></tr>
+        <tr>
+          <td><div class="td-name">Cek Aki / Baterai<small>MF Maintenance Free</small></div></td>
+          <td class="td-km">6.000 km</td><td class="td-bln">6 bln</td>
+          <td><span class="prio p-rutin">RUTIN</span></td>
+          <td class="td-note-text">Cek tegangan: 12.4–12.8V normal. Di bawah 12V = lemah. Aki MF tidak perlu isi air. Usia rata-rata 2–3 tahun</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Cek Lampu & Kelistrikan<small>Lampu, sein, klakson</small></div></td>
+          <td class="td-km">Setiap servis</td><td class="td-bln">3 bln</td>
+          <td><span class="prio p-rutin">RUTIN</span></td>
+          <td class="td-note-text">Pastikan semua lampu (depan, belakang, sein, rem) berfungsi. Cek saklar dan kabel yang terkelupas</td>
+        </tr>
+        <tr>
+          <td><div class="td-name">Bersihkan Busi Starter<small>Motor starter listrik</small></div></td>
+          <td class="td-km">12.000 km</td><td class="td-bln">12 bln</td>
+          <td><span class="prio p-rutin">RUTIN</span></td>
+          <td class="td-note-text">Bersihkan karbon di brush starter. Starter keras atau lambat = tanda aki lemah atau brush aus</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box ib-amber">
+    <div class="ib-icon">⚠️</div>
+    <div class="ib-body">
+      <strong>Kondisi Jakarta & Kota Besar — Percepat Interval!</strong>
+      <p>Kemacetan ekstrem membuat mesin bekerja lebih keras dalam RPM rendah terus-menerus. <b>Standar Indonesia: ganti oli setiap 2 bulan atau 2.000 km</b> — mana yang lebih dulu. Di kondisi macet berat Jakarta/kota besar, oli bisa hitam pekat dalam 6 minggu. Bersihkan filter udara setiap <b>2.000 km</b>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TAB 2 — MOTOR SPORT & BEBEK
+════════════════════════════════════ -->
+<div id="t2" class="tab-content">
+  <div class="sec-hdr">
+    <h2>🏍️ Jadwal Servis Motor Sport & Bebek</h2>
+    <p>Honda CB150R · CBR150/250 · Supra GTR · Revo &nbsp;|&nbsp; Yamaha R15 · MT-15 · MX King · Jupiter Z · V-ixion &nbsp;|&nbsp; Suzuki GSX-R · Satria FU &nbsp;|&nbsp; Kawasaki KLX · Ninja</p>
+  </div>
+
+  <div class="quick-strip">
+    <div class="qs-card">
+      <div class="qs-label">🛢️ Oli Sport</div>
+      <div class="qs-val">2.000–4.000 km</div>
+      <div class="qs-note">JASO MA2 untuk kopling basah. BUKAN JASO MB!</div>
+    </div>
+    <div class="qs-card">
+      <div class="qs-label">⛓️ Pelumas Rantai</div>
+      <div class="qs-val">Setiap 500–800 km</div>
+      <div class="qs-note">Chain lube spray atau chain wax</div>
+    </div>
+    <div class="qs-card">
+      <div class="qs-label">⛓️ Ganti Rantai+Sprocket</div>
+      <div class="qs-val">15.000–25.000 km</div>
+      <div class="qs-note">Ganti sepaket 3 komponen sekaligus</div>
+    </div>
+    <div class="qs-card">
+      <div class="qs-label">🔧 Setel Klep</div>
+      <div class="qs-val">8.000–12.000 km</div>
+      <div class="qs-note">Lebih sering karena RPM tinggi</div>
+    </div>
+  </div>
+
+  <div class="info-box ib-red">
+    <div class="ib-icon">🚨</div>
+    <div class="ib-body">
+      <strong>PERHATIAN: Jangan Pakai Oli Matic untuk Motor Sport!</strong>
+      <p>Oli JASO MB (untuk matic) mengandung aditif yang melemahkan kopling. Motor sport/bebek menggunakan kopling basah yang WAJIB memakai oli <b>JASO MA atau JASO MA2</b>. Salah oli = kopling selip dan cepat rusak!</p>
+    </div>
+  </div>
+
+  <div class="tbl-card">
+    <div class="tbl-title-bar">
+      <div class="tbl-title">Jadwal Lengkap Motor Sport & Bebek</div>
+      <span class="tbl-badge b-purple">Termasuk Motor Kopling Basah</span>
+    </div>
+    <table>
+      <colgroup><col class="col-item"/><col class="col-km"/><col class="col-bln"/><col class="col-prio"/><col class="col-note"/></colgroup>
+      <thead><tr><th>Komponen / Pekerjaan</th><th>Interval KM</th><th>Bulan</th><th>Prioritas</th><th>Catatan Teknis</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" class="cat-row">🛢️ SISTEM PELUMASAN</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Mesin<small>Kopling basah</small></div></td><td class="td-km">2.000–4.000 km</td><td class="td-bln">2 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">JASO MA2 wajib. Kapasitas 800ml–1.3L. Oli melumasi mesin DAN kopling sekaligus. SAE 10W-40 atau 15W-50 untuk sport performa. Standar 2 bulan untuk kondisi Indonesia</td></tr>
+        <tr><td><div class="td-name">Cek Level Oli Mesin<small>Dipstick / sight glass</small></div></td><td class="td-km">Setiap saat</td><td class="td-bln">—</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Motor sport konsumsi oli lebih cepat karena RPM tinggi. Cek sebelum setiap perjalanan jauh</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Kopling (jika terpisah)<small>Beberapa model sport</small></div></td><td class="td-km">10.000–15.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Hanya untuk motor dengan oli kopling terpisah dari oli mesin (jarang di motor Indonesia)</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-teal">⛓️ RANTAI & TRANSMISI</td></tr>
+        <tr><td><div class="td-name">Pelumas Rantai<small>Chain lubrication</small></div></td><td class="td-km">500–800 km</td><td class="td-bln">1 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Bersihkan dulu dengan chain cleaner, baru semprot chain lube. Jangan pakai oli bekas — kotoran menumpuk</td></tr>
+        <tr><td><div class="td-name">Setel & Cek Kekencangan Rantai<small>Chain tension</small></div></td><td class="td-km">Setiap servis</td><td class="td-bln">1 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Kekencangan ideal: 20–30mm. Rantai kendur = bahaya copot. Terlalu kencang = bearing roda cepat rusak</td></tr>
+        <tr><td><div class="td-name">Ganti Rantai + Sprocket (Sepaket)<small>Rantai, gear depan & belakang</small></div></td><td class="td-km">15.000–25.000 km</td><td class="td-bln">—</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">WAJIB ganti sepaket 3 komponen sekaligus. Rantai baru + sprocket lama = rantai cepat aus lagi. Gunakan RK, DID, atau EK</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-amber">🔥 PEMBAKARAN & UDARA</td></tr>
+        <tr><td><div class="td-name">Cek Busi<small>Gap & kondisi elektroda</small></div></td><td class="td-km">4.000 km</td><td class="td-bln">4 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Gap busi motor sport: 0.6–0.8mm. Motor sport sering pakai busi iridium atau platinum. Busi aus = tenaga drop, susah start</td></tr>
+        <tr><td><div class="td-name">Ganti Busi<small>Standar/Iridium</small></div></td><td class="td-km">8.000–20.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Standar: 8.000–10.000 km. Iridium: 20.000 km. NGK Iridium IX atau Denso Iridium Power direkomendasikan</td></tr>
+        <tr><td><div class="td-name">Bersihkan & Ganti Filter Udara</div></td><td class="td-km">Bersihkan 4.000 / Ganti 12.000</td><td class="td-bln">2 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Filter racing (K&N) bisa dicuci. Filter standar ganti tiap 12.000 km. Filter kotor = pembakaran tidak sempurna</td></tr>
+        <tr><td><div class="td-name">Setel Klep Mesin<small>Intake & exhaust valve</small></div></td><td class="td-km">8.000–12.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Motor sport RPM tinggi = klep aus lebih cepat. Lakukan di bengkel resmi. Klep bocor = kompresi hilang, mesin tidak bertenaga</td></tr>
+        <tr><td><div class="td-name">Bersihkan Karburator / Throttle Body<small>Sistem bahan bakar</small></div></td><td class="td-km">8.000–12.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Karburator: bersihkan pilot jet, main jet, jarum skep. Injeksi: bersihkan throttle body dan ISC</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-red">🛑 REM & KESELAMATAN</td></tr>
+        <tr><td><div class="td-name">Cek Rem Depan & Belakang</div></td><td class="td-km">Setiap servis</td><td class="td-bln">2 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Cek kampas, minyak rem (DOT 4 untuk sport), kebocoran selang rem. Test di tempat aman setelah servis</td></tr>
+        <tr><td><div class="td-name">Ganti Minyak Rem<small>Brake fluid DOT 4</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Motor sport WAJIB DOT 4 (bukan DOT 3). Minyak rem menyerap air dari udara → titik didih turun → rem blong di jalan turun</td></tr>
+        <tr><td><div class="td-name">Ganti Kampas Rem<small>Depan & belakang</small></div></td><td class="td-km">15.000–25.000 km</td><td class="td-bln">—</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Lebih cepat untuk motor sport yang sering di RPM tinggi. Ganti dengan merek OEM atau Ferodo, EBC</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-purple">🔵 SUSPENSI & LAINNYA</td></tr>
+        <tr><td><div class="td-name">Cek Suspensi Depan (Fork)<small>Telescopic front fork</small></div></td><td class="td-km">Setiap servis</td><td class="td-bln">6 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Cek kebocoran seal fork. Oli fork bocor = suspensi tidak berfungsi = handling berbahaya di tikungan</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Fork<small>Fork oil</small></div></td><td class="td-km">20.000–30.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Gunakan oli fork sesuai SAE yang direkomendasikan (biasanya SAE 10 atau 15). Kental/encer berpengaruh pada handling</td></tr>
+        <tr><td><div class="td-name">Cek Kopling<small>Cable & plates</small></div></td><td class="td-km">Setiap servis</td><td class="td-bln">3 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Setel jarak main tuas kopling: 10–20mm. Lumasi kabel kopling. Kopling selip = kampas aus, ganti</td></tr>
+        <tr><td><div class="td-name">Ganti Kampas Kopling<small>Clutch plates</small></div></td><td class="td-km">20.000–30.000 km</td><td class="td-bln">—</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Ganti jika kopling selip saat akselerasi atau perpindahan gigi tidak smooth. Ganti sepaket semua kampas</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TAB 3 — MOBIL BENSIN
+════════════════════════════════════ -->
+<div id="t3" class="tab-content">
+  <div class="sec-hdr">
+    <h2>🚗 Jadwal Servis Mobil City Car & MPV</h2>
+    <p>Honda Brio · Jazz · Mobilio · BR-V · HR-V &nbsp;|&nbsp; Toyota Agya · Avanza · Veloz · Innova · Rush &nbsp;|&nbsp; Daihatsu Ayla · Sigra · Xenia &nbsp;|&nbsp; Suzuki Ertiga · Mitsubishi Xpander</p>
+  </div>
+
+  <div class="info-box ib-teal">
+    <div class="ib-icon">✅</div>
+    <div class="ib-body">
+      <strong>Sumber: Buku Manual Resmi Honda Indonesia & Toyota Auto2000</strong>
+      <p>Jadwal ini mengacu pada buku service manual resmi. Untuk kondisi berat (macet > 50% perjalanan, jalan berbatu, angkutan barang) — <b>percepat interval 20–30%</b>.</p>
+    </div>
+  </div>
+
+  <div class="quick-strip">
+    <div class="qs-card"><div class="qs-label">🛢️ Ganti Oli Mesin</div><div class="qs-val">5.000–10.000 km</div><div class="qs-note">5.000km / 4 bln jika macet. 10.000km / 6 bln highway</div></div>
+    <div class="qs-card"><div class="qs-label">🔧 Servis Ringan</div><div class="qs-val">10.000 km / 6 bulan</div><div class="qs-note">Oli + filter oli + cek semua cairan</div></div>
+    <div class="qs-card"><div class="qs-label">⚙️ Servis Besar</div><div class="qs-val">40.000 km / 2 tahun</div><div class="qs-note">Semua sistem diperiksa menyeluruh</div></div>
+    <div class="qs-card"><div class="qs-label">⚠️ Timing Belt</div><div class="qs-val">60.000–80.000 km</div><div class="qs-note">KRITIS — putus = mesin rusak total!</div></div>
+  </div>
+
+  <div class="tbl-card">
+    <div class="tbl-title-bar">
+      <div class="tbl-title">Jadwal Lengkap Servis Mobil Bensin</div>
+      <span class="tbl-badge b-teal">Honda, Toyota, Daihatsu Resmi</span>
+    </div>
+    <table>
+      <colgroup><col class="col-item"/><col class="col-km"/><col class="col-bln"/><col class="col-prio"/><col class="col-note"/></colgroup>
+      <thead><tr><th>Komponen / Pekerjaan</th><th>Interval KM</th><th>Bulan</th><th>Prioritas</th><th>Catatan Teknis</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" class="cat-row">🛢️ SISTEM PELUMASAN</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Mesin + Filter Oli<small>Engine oil & oil filter</small></div></td><td class="td-km">5.000–10.000 km</td><td class="td-bln">4–6 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">5.000km / 4 bulan untuk kondisi macet kota. 10.000km / 6 bulan untuk highway. SAE 0W-20 atau 5W-30 (mobil baru). 10W-30 untuk mobil tua. API SP terbaru</td></tr>
+        <tr><td><div class="td-name">Cek Level Oli Mesin<small>Dipstick check</small></div></td><td class="td-km">Setiap minggu</td><td class="td-bln">—</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Cek saat mesin dingin, mobil di permukaan rata. Level harus di antara garis MIN dan MAX di dipstick</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Transmisi CVT<small>CVT Fluid — sangat kritis</small></div></td><td class="td-km">40.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-kritis">KRITIS</span></td><td class="td-note-text">JANGAN pakai ATF biasa! CVT rusak = ganti transmisi Rp 15–40 juta. Toyota CVT Fluid / Honda HCF-2. Jangan lewat jadwal!</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Transmisi AT<small>Automatic Transmission Fluid</small></div></td><td class="td-km">30.000–40.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">ATF Dexron VI (Toyota) atau Honda DW-1. Penggantian rutin cegah perpindahan gigi kasar dan slip transmisi</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Transmisi Manual<small>Manual Transmission Fluid</small></div></td><td class="td-km">40.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">MTF 75W-90 atau GL-4. Gigi terasa keras saat pindah = tanda oli sudah rusak</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Power Steering<small>Hanya untuk PS hidrolik</small></div></td><td class="td-km">40.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">EPS (Electric Power Steering) tidak perlu oli. PS hidrolik: cek level tiap 6 bulan. Pakai PSF atau Dexron III</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-teal">🌡️ SISTEM PENDINGIN</td></tr>
+        <tr><td><div class="td-name">Cek Level Coolant / Air Radiator<small>Engine coolant check</small></div></td><td class="td-km">Setiap servis</td><td class="td-bln">3 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Cek di tabung reservoir (BUKAN tutup radiator). Level harus antara LOW–FULL. JANGAN buka tutup radiator saat mesin panas!</td></tr>
+        <tr><td><div class="td-name">Ganti Coolant<small>Kuras & isi ulang</small></div></td><td class="td-km">40.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Kuras total lalu isi dengan coolant baru. Gunakan coolant sesuai warna yang sudah ada. JANGAN campur warna berbeda</td></tr>
+        <tr><td><div class="td-name">Cek Selang & Klem Radiator<small>Rubber hoses</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Remas selang saat dingin. Jika keras/retak = ganti segera. Selang bocor = mesin overheat dalam menit</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-amber">🔥 SISTEM PEMBAKARAN</td></tr>
+        <tr><td><div class="td-name">Ganti Busi Standar<small>Copper/nickel spark plug</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Busi aus = susah start, mesin brebet, boros BBM. Ganti satu set semua busi bersamaan</td></tr>
+        <tr><td><div class="td-name">Ganti Busi Iridium / Platinum<small>Premium spark plug</small></div></td><td class="td-km">60.000–100.000 km</td><td class="td-bln">—</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Busi iridium lebih awet tapi tetap perlu dicek setiap 20.000 km. NGK Iridium IX atau Denso Iridium</td></tr>
+        <tr><td><div class="td-name">Bersihkan Filter Udara<small>Air filter cleaning</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Tiup dari dalam ke luar. Lebih sering jika sering di jalan tanah/berdebu (proyek, dll)</td></tr>
+        <tr><td><div class="td-name">Ganti Filter Udara<small>Air filter replacement</small></div></td><td class="td-km">30.000 km</td><td class="td-bln">18 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Filter kotor = pembakaran tidak sempurna = boros BBM. Mobil Indonesia: ganti lebih sering karena debu tinggi</td></tr>
+        <tr><td><div class="td-name">Ganti Filter Bahan Bakar<small>Fuel filter</small></div></td><td class="td-km">40.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Menjaga injektor tetap bersih. BBM Indonesia (Pertalite) kualitasnya tidak seragam, sehingga filter lebih mudah kotor</td></tr>
+        <tr><td><div class="td-name">Bersihkan Throttle Body<small>Electronic throttle</small></div></td><td class="td-km">20.000–30.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Cegah idle kasar, mesin mati tiba-tiba. Gunakan throttle body cleaner spray. Wajib untuk mobil injeksi modern</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-red">⏰ TIMING SYSTEM — KRITIS</td></tr>
+        <tr><td><div class="td-name">Ganti Timing Belt + Tensioner + Water Pump<small>PALING KRITIS di kendaraan</small></div></td><td class="td-km">60.000–80.000 km</td><td class="td-bln">48–60 bln</td><td><span class="prio p-kritis">KRITIS</span></td><td class="td-note-text">Putus = piston bertabrakan dengan klep = mesin hancur. Biaya perbaikan Rp 15–50 juta. Ganti SEPAKET dengan tensioner dan water pump. Jangan tunda!</td></tr>
+        <tr><td><div class="td-name">Cek Timing Chain & Tensioner<small>Untuk mesin chain-driven</small></div></td><td class="td-km">60.000–80.000 km</td><td class="td-bln">—</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Rantai lebih awet dari belt, tapi tetap bisa molor. Tanda: suara ketukan di mesin saat start dingin = chain atau tensioner aus</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-red">🛑 REM & KESELAMATAN</td></tr>
+        <tr><td><div class="td-name">Cek Rem Depan & Belakang<small>Visual & feel check</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Cek ketebalan kampas cakram: min 2mm. Tromol: min 1mm. Cek disc rotor dari goresan dan kerataan</td></tr>
+        <tr><td><div class="td-name">Ganti Kampas Rem Depan (Cakram)<small>Disc brake pads</small></div></td><td class="td-km">30.000–40.000 km</td><td class="td-bln">—</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Ganti jika bunyi decit atau getaran saat rem. Jangan tunda — kampas habis = cakram terkikis (mahal)</td></tr>
+        <tr><td><div class="td-name">Ganti Kampas Rem Belakang<small>Drum atau disc belakang</small></div></td><td class="td-km">40.000–60.000 km</td><td class="td-bln">—</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Tromol belakang lebih awet dari cakram. Cek ketebalan setiap 20.000 km</td></tr>
+        <tr><td><div class="td-name">Ganti Minyak Rem<small>Brake fluid DOT 3/4</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">24 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Minyak rem menyerap uap air → titik didih turun → rem blong saat panas (brake fade). DOT 4 untuk mobil sport/performa</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-purple">🔵 BAN, RODA & SUSPENSI</td></tr>
+        <tr><td><div class="td-name">Cek Tekanan Ban (5 ban)<small>Termasuk ban serep</small></div></td><td class="td-km">Setiap bulan</td><td class="td-bln">1 bln</td><td><span class="prio p-wajib">WAJIB</span></td><td class="td-note-text">Sesuaikan dengan label di pintu pengemudi (bukan di ban). Ukur saat ban dingin. Ban serep cek setiap 3 bulan</td></tr>
+        <tr><td><div class="td-name">Balancing & Rotasi Ban<small>Wheel balancing & rotation</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Balancing: cegah setir getar. Rotasi: ratakan keausan 4 ban. Pola silang untuk ban non-directional</td></tr>
+        <tr><td><div class="td-name">Spooring / Wheel Alignment<small>4-wheel alignment</small></div></td><td class="td-km">10.000–20.000 km</td><td class="td-bln">—</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Atau setiap kali kena lubang besar / tubrukan. Spooring tidak pas = ban aus tidak merata + boros BBM + setir miring</td></tr>
+        <tr><td><div class="td-name">Ganti Ban (4 buah)<small>Tire replacement</small></div></td><td class="td-km">40.000–60.000 km</td><td class="td-bln">48–60 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Ganti jika alur ban < 1.6mm (batas legal). Juga ganti jika umur > 5 tahun meski km sedikit (karet mengeras)</td></tr>
+        <tr><td><div class="td-name">Cek Shockbreaker<small>Front & rear suspension</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Cek kebocoran oli. Mobil memantul > 2x setelah ditekan = shockbreaker lemah. Ganti sepasang (kiri-kanan)</td></tr>
+
+        <tr><td colspan="5" class="cat-row">⚡ KELISTRIKAN & AC</td></tr>
+        <tr><td><div class="td-name">Cek & Ganti Aki<small>Automotive battery</small></div></td><td class="td-km">—</td><td class="td-bln">24–36 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Usia rata-rata aki: 2–3 tahun. Cek tegangan: 12.6V normal, < 12V lemah. Bersihkan terminal dari kerak putih</td></tr>
+        <tr><td><div class="td-name">Ganti Filter Kabin / Filter AC<small>Cabin air filter</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-penting">PENTING</span></td><td class="td-note-text">Cegah bau apek di kabin. Filter HEPA lebih baik untuk daerah berdebu. Bisa ganti sendiri (lokasi biasanya di balik laci)</td></tr>
+        <tr><td><div class="td-name">Servis AC (cuci evaporator)<small>AC system maintenance</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12–18 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Cuci evaporator cegah bau dan jamur. Cek tekanan freon. Ganti filter AC bersamaan. AC bau tanah = evaporator kotor</td></tr>
+        <tr><td><div class="td-name">Cek Sistem Kelistrikan<small>Wiring & fuse</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12 bln</td><td><span class="prio p-rutin">RUTIN</span></td><td class="td-note-text">Cek semua lampu, sekring, soket kabel. Kabel terkelupas = risiko korsleting dan kebakaran</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box ib-red">
+    <div class="ib-icon">🚨</div>
+    <div class="ib-body">
+      <strong>3 Komponen Paling Sering Diabaikan di Indonesia</strong>
+      <p><b>1. Timing Belt</b> — Putus saat jalan = mesin hancur. Biaya perbaikan bisa Rp 20–50 juta. Ganti tepat waktu tanpa pengecualian.<br/><b>2. Oli Transmisi CVT</b> — Banyak pemilik tidak pernah ganti ini. CVT rusak = ganti transmisi Rp 15–40 juta. Pakai cairan khusus CVT!<br/><b>3. Coolant / Air Radiator</b> — Sering diisi air biasa. Air biasa tidak ada inhibitor korosi, sehingga radiator dan water pump cepat bocor.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TAB 4 — SUV & DIESEL
+════════════════════════════════════ -->
+<div id="t4" class="tab-content">
+  <div class="sec-hdr">
+    <h2>🚙 Jadwal Servis SUV, Pickup & Mesin Diesel</h2>
+    <p>Toyota Fortuner · Hilux · Kijang Innova Diesel &nbsp;|&nbsp; Honda CR-V · HR-V &nbsp;|&nbsp; Mitsubishi Pajero Sport · L300 &nbsp;|&nbsp; Isuzu Panther · D-Max &nbsp;|&nbsp; Daihatsu Rocky · Terios</p>
+  </div>
+
+  <div class="info-box ib-amber">
+    <div class="ib-icon">⛽</div>
+    <div class="ib-body">
+      <strong>Diesel vs Bensin — Perbedaan Utama Perawatan</strong>
+      <p>Mesin diesel membutuhkan <b>interval ganti oli lebih pendek</b> (5.000–7.500 km), <b>filter solar wajib diganti</b> rutin, dan <b>water separator harus dibuang</b> airnya. Diesel modern Common Rail sangat sensitif terhadap kualitas solar — pakai Pertamina Dex atau Shell V-Power Diesel.</p>
+    </div>
+  </div>
+
+  <div class="tbl-card">
+    <div class="tbl-title-bar">
+      <div class="tbl-title">Jadwal Lengkap SUV & Pickup (Bensin & Diesel)</div>
+      <span class="tbl-badge b-orange">Termasuk 4WD & Common Rail Diesel</span>
+    </div>
+    <table>
+      <colgroup><col class="col-item"/><col class="col-km"/><col class="col-bln"/><col class="col-prio"/><col class="col-note"/></colgroup>
+      <thead><tr><th>Komponen / Pekerjaan</th><th>Interval KM</th><th>Bulan</th><th>Tipe</th><th>Catatan Teknis</th></tr></thead>
+      <tbody>
+        <tr><td colspan="5" class="cat-row">🛢️ PELUMASAN DIESEL & BENSIN</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Mesin Bensin<small>SUV bensin</small></div></td><td class="td-km">5.000–10.000 km</td><td class="td-bln">6 bln</td><td><span class="tbl-badge b-blue">Bensin</span></td><td class="td-note-text">SAE 5W-30 atau 5W-40 API SP. SUV besar sering pakai oli lebih banyak (4–5L). Cek level lebih rutin</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Mesin Diesel<small>Lebih sering dari bensin</small></div></td><td class="td-km">5.000–7.500 km</td><td class="td-bln">4–6 bln</td><td><span class="tbl-badge b-amber">Diesel</span></td><td class="td-note-text">SAE 15W-40 CI-4 (diesel konvensional) atau 5W-40 CJ-4/CK-4 untuk Common Rail. Diesel menghasilkan lebih banyak jelaga = oli lebih cepat kotor</td></tr>
+        <tr><td><div class="td-name">Ganti Filter Oli<small>Oil filter</small></div></td><td class="td-km">Setiap ganti oli</td><td class="td-bln">—</td><td><span class="tbl-badge b-blue">Semua</span></td><td class="td-note-text">Ganti bersamaan dengan oli mesin. Filter oli yang tersumbat = mesin jalan tanpa pelumasan = rusak parah</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-amber">⛽ SISTEM BAHAN BAKAR DIESEL</td></tr>
+        <tr><td><div class="td-name">Ganti Filter Solar (Fuel Filter)<small>WAJIB diesel</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="tbl-badge b-amber">Diesel</span></td><td class="td-note-text">Solar Indonesia banyak mengandung air dan kotoran. Filter kotor = injektor Common Rail mampet. Biaya ganti injektor: Rp 3–8 juta/buah!</td></tr>
+        <tr><td><div class="td-name">Buang Air dari Water Separator<small>Fuel water separator drain</small></div></td><td class="td-km">5.000 km</td><td class="td-bln">3 bln</td><td><span class="tbl-badge b-amber">Diesel</span></td><td class="td-note-text">Buka drain plug di bawah filter solar, buang air yang mengendap. Air masuk injektor = injektor karat dan rusak</td></tr>
+        <tr><td><div class="td-name">Bersihkan Injektor Common Rail<small>Fuel injector cleaning</small></div></td><td class="td-km">40.000–60.000 km</td><td class="td-bln">24–36 bln</td><td><span class="tbl-badge b-amber">Diesel CR</span></td><td class="td-note-text">Gunakan injector cleaner additive setiap 10.000 km. Servis ultrasonik di bengkel diesel khusus tiap 40.000 km</td></tr>
+        <tr><td><div class="td-name">Ganti Filter Udara<small>Diesel butuh udara banyak</small></div></td><td class="td-km">10.000–20.000 km</td><td class="td-bln">12 bln</td><td><span class="tbl-badge b-amber">Diesel</span></td><td class="td-note-text">Diesel turbo sangat sensitif terhadap debu. Filter kotor = turbo overheat. Off-road: ganti setiap 5.000–10.000 km</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-teal">⚙️ SISTEM 4WD & GARDAN</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Gardan Depan<small>Front differential oil</small></div></td><td class="td-km">20.000–40.000 km</td><td class="td-bln">24 bln</td><td><span class="tbl-badge b-blue">4WD/AWD</span></td><td class="td-note-text">GL-5 75W-90. Setelah off-road atau wading (menerjang banjir) — ganti segera karena air bisa masuk</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Gardan Belakang<small>Rear differential oil</small></div></td><td class="td-km">20.000–40.000 km</td><td class="td-bln">24 bln</td><td><span class="tbl-badge b-blue">4WD/AWD</span></td><td class="td-note-text">Sama dengan gardan depan. Oli gardan menghitam atau ada bau terbakar = ada masalah bearing gardan</td></tr>
+        <tr><td><div class="td-name">Ganti Oli Transfer Case<small>4WD transfer case</small></div></td><td class="td-km">40.000 km</td><td class="td-bln">24 bln</td><td><span class="tbl-badge b-blue">4WD</span></td><td class="td-note-text">Gunakan oli khusus transfer case (bukan oli biasa). Transfer case rusak = 4WD tidak berfungsi. Mahal!</td></tr>
+        <tr><td><div class="td-name">Cek CV Joint & Boot<small>Constant velocity joint</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="tbl-badge b-blue">4WD/AWD</span></td><td class="td-note-text">Cek boot karet dari robekan/sobek. Boot robek = gemuk CV joint habis = CV joint rusak. Suara klik saat belok = CV joint mau rusak</td></tr>
+        <tr><td><div class="td-name">Lumasi Nipple Grease<small>Grease nipple lubrication</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="tbl-badge b-blue">4WD Lama</span></td><td class="td-note-text">Untuk SUV/pickup lama yang punya nipple grease di as roda dan kemudi. Gunakan grease gun dengan gemuk EP</td></tr>
+
+        <tr><td colspan="5" class="cat-row cat-row-red">🛑 REM BERAT & KESELAMATAN</td></tr>
+        <tr><td><div class="td-name">Cek Rem (SUV lebih berat)<small>Brake system</small></div></td><td class="td-km">10.000 km</td><td class="td-bln">6 bln</td><td><span class="tbl-badge b-red">WAJIB</span></td><td class="td-note-text">SUV berat butuh rem lebih kuat. Cek kampas lebih sering. Kampas rem SUV lebih cepat habis dari city car</td></tr>
+        <tr><td><div class="td-name">Ganti Minyak Rem DOT 4<small>Heavy duty brake fluid</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">24 bln</td><td><span class="tbl-badge b-red">WAJIB</span></td><td class="td-note-text">SUV wajib DOT 4. Jalan turun + muatan berat = rem panas = brake fade jika minyak rem tidak bagus</td></tr>
+        <tr><td><div class="td-name">Cek Booster & Master Rem<small>Brake booster & master cylinder</small></div></td><td class="td-km">20.000 km</td><td class="td-bln">12 bln</td><td><span class="tbl-badge b-blue">Semua</span></td><td class="td-note-text">Rem terasa keras (tidak ada booster) = vacuum hose bocor atau booster rusak. Jangan abaikan!</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TAB 5 — PANDUAN OLI
+════════════════════════════════════ -->
+<div id="t5" class="tab-content">
+  <div class="sec-hdr">
+    <h2>🛢️ Panduan Membaca Kode & Memilih Oli</h2>
+    <p>Cara baca kode SAE, API, dan JASO — panduan memilih oli yang benar untuk kendaraan Anda</p>
+  </div>
+
+  <div class="oli-explain">
+    <div class="oli-explain-head">
+      <h3>Cara Baca Kode Oli: Contoh "10W-40 API SN JASO MA2"</h3>
+      <p>Setiap kode pada kemasan oli punya arti penting. Salah pilih oli bisa merusak mesin!</p>
+    </div>
+    <div class="oli-code-grid">
+      <div class="oli-code-item">
+        <div class="oli-code">10W</div>
+        <div class="oli-code-desc"><b>W = Winter.</b> Angka sebelum W = kekentalan saat dingin. Makin kecil = makin encer saat dingin → mesin lebih mudah start di pagi hari.</div>
+        <div class="oli-code-ex">0W, 5W, 10W, 15W, 20W</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">-40</div>
+        <div class="oli-code-desc"><b>Angka setelah tanda hubung</b> = kekentalan saat mesin panas. Makin besar = makin kental → cocok untuk iklim tropis Indonesia yang panas.</div>
+        <div class="oli-code-ex">20, 30, 40, 50, 60</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">API SN/SP</div>
+        <div class="oli-code-desc"><b>American Petroleum Institute.</b> Standar kualitas oli. SP (2020) > SN (2010) > SM > SL. Makin baru = makin baik. Minimal gunakan SN untuk mobil modern.</div>
+        <div class="oli-code-ex">Untuk mesin bensin: S</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">API CI/CJ</div>
+        <div class="oli-code-desc"><b>C = Compression ignition = Diesel.</b> CK-4 > CJ-4 > CI-4 > CH-4. Common rail diesel modern butuh minimal CJ-4. Jangan pakai oli bensin untuk diesel!</div>
+        <div class="oli-code-ex">Untuk mesin diesel: C</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">JASO MA2</div>
+        <div class="oli-code-desc"><b>Untuk motor sport/bebek kopling basah.</b> MA2 > MA. Oli dengan standar ini TIDAK melemahkan kopling. WAJIB untuk motor dengan kopling manual.</div>
+        <div class="oli-code-ex">Honda CB, Yamaha R15, Kawasaki</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">JASO MB</div>
+        <div class="oli-code-desc"><b>Untuk motor matic (CVT/kopling kering).</b> Mengandung aditif friction modifier yang melunakkan kopling. JANGAN pakai di motor sport/bebek!</div>
+        <div class="oli-code-ex">Honda Beat, Vario, Yamaha NMAX</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">Full Synth</div>
+        <div class="oli-code-desc"><b>Full Synthetic</b> = dibuat dari bahan kimia murni. Lebih tahan panas, lebih awet, lebih mahal. Interval ganti lebih panjang (3.000–5.000 km).</div>
+        <div class="oli-code-ex">Motul, Castrol Edge, Shell Ultra</div>
+      </div>
+      <div class="oli-code-item">
+        <div class="oli-code">Semi Synth</div>
+        <div class="oli-code-desc"><b>Semi Synthetic</b> = campuran mineral + sintetis. Kualitas menengah, harga terjangkau. Interval normal (2.000–3.000 km motor, 5.000–7.500 km mobil).</div>
+        <div class="oli-code-ex">AHM MPX 2, Shell AX7</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tbl-card">
+    <div class="tbl-title-bar">
+      <div class="tbl-title">Panduan Cepat Memilih Oli — Berdasarkan Jenis Kendaraan</div>
+      <span class="tbl-badge b-blue">Referensi Standar Indonesia</span>
+    </div>
+    <table>
+      <thead><tr><th>Jenis Kendaraan</th><th>SAE yang Disarankan</th><th>Standar Min.</th><th>Prioritas</th><th>Catatan</th></tr></thead>
+      <tbody>
+        <tr><td><div class="td-name">Motor Matic (Beat, Vario, Mio, NMAX)</div></td><td class="td-km">10W-30 atau 10W-40</td><td class="td-bln">JASO MB</td><td><span class="prio p-wajib">JASO MB</span></td><td class="td-note-text">Kapasitas ±800ml. JANGAN pakai JASO MA/MA2 — kopling CVT akan selip</td></tr>
+        <tr><td><div class="td-name">Motor Sport (CB150R, R15, GSX, Ninja)</div></td><td class="td-km">10W-40 atau 15W-50</td><td class="td-bln">JASO MA2</td><td><span class="prio p-wajib">JASO MA2</span></td><td class="td-note-text">Kapasitas 800ml–1.2L. JANGAN pakai JASO MB — kopling basah akan selip berbahaya</td></tr>
+        <tr><td><div class="td-name">Motor Bebek (Supra, Revo, Jupiter Z)</div></td><td class="td-km">20W-50 atau 10W-40</td><td class="td-bln">JASO MA</td><td><span class="prio p-wajib">JASO MA</span></td><td class="td-note-text">Motor bebek lama: 20W-50 (lebih kental). Motor bebek baru injeksi: 10W-40</td></tr>
+        <tr><td><div class="td-name">Mobil Bensin Baru (< 5 tahun)</div></td><td class="td-km">0W-20 atau 5W-30</td><td class="td-bln">API SP</td><td><span class="prio p-penting">API SP</span></td><td class="td-note-text">Mesin modern dirancang untuk oli encer. Pakai 10W-40 → BBM boros dan mesin kurang optimal</td></tr>
+        <tr><td><div class="td-name">Mobil Bensin Lama (> 5 tahun / > 100rb km)</div></td><td class="td-km">10W-40 atau 15W-40</td><td class="td-bln">API SN</td><td><span class="prio p-penting">API SN</span></td><td class="td-note-text">Mesin lama butuh oli lebih kental karena clearance lebih longgar. Oli terlalu encer = konsumsi oli tinggi</td></tr>
+        <tr><td><div class="td-name">Mobil Diesel Konvensional (Panther, Kijang diesel lama)</div></td><td class="td-km">15W-40 atau 20W-50</td><td class="td-bln">API CI-4</td><td><span class="prio p-penting">CI-4</span></td><td class="td-note-text">Diesel konvensional bisa pakai oli lebih murah. JANGAN pakai oli bensin (API S) untuk diesel!</td></tr>
+        <tr><td><div class="td-name">Mobil Diesel Common Rail (Fortuner, Pajero, Hilux baru)</div></td><td class="td-km">5W-40 atau 5W-30</td><td class="td-bln">API CJ-4</td><td><span class="prio p-kritis">CJ-4 WAJIB</span></td><td class="td-note-text">Common rail SANGAT sensitif terhadap kualitas oli. CJ-4 atau CK-4. Jangan coba hemat pakai oli murah!</td></tr>
+        <tr><td><div class="td-name">Transmisi CVT Mobil</div></td><td class="td-km">CVT Fluid Khusus</td><td class="td-bln">Merek spesifik</td><td><span class="prio p-kritis">KHUSUS</span></td><td class="td-note-text">Toyota: Toyota CVT Fluid FE / WS. Honda: Honda HCF-2. JANGAN pakai ATF biasa. CVT rusak = Rp 15–40 juta!</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box ib-purple">
+    <div class="ib-icon">💡</div>
+    <div class="ib-body">
+      <strong>5 Kesalahan Oli yang Paling Sering Terjadi di Indonesia</strong>
+      <p>
+        <b>1.</b> Pakai oli matic (JASO MB) untuk motor sport — kopling selip dan rusak.<br/>
+        <b>2.</b> Pakai ATF biasa untuk CVT mobil — transmisi CVT bisa rusak total.<br/>
+        <b>3.</b> Oli terlalu kental untuk mobil baru — mesin modern butuh oli encer (0W-20/5W-30).<br/>
+        <b>4.</b> Campur dua merek/tipe oli berbeda — boleh darurat saja, ganti total sesegera mungkin.<br/>
+        <b>5.</b> Ganti oli terlambat karena menunggu oli "hitam" — oli rusak secara kimiawi jauh sebelum terlihat hitam.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     TAB 6 — CHECKLIST & GEJALA
+════════════════════════════════════ -->
+<div id="t6" class="tab-content">
+  <div class="sec-hdr">
+    <h2>✅ Checklist & Tanda Kerusakan Kendaraan</h2>
+    <p>Panduan pemeriksaan sebelum perjalanan, perawatan musim hujan, dan mengenali gejala kerusakan kendaraan</p>
+  </div>
+
+  <div class="checklist-grid">
+    <div class="cl-card">
+      <div class="cl-head">
+        <div class="cl-head-title">🛵 Checklist Motor — Perjalanan Jauh</div>
+        <div class="cl-head-sub">Lakukan sebelum mudik, wisata, atau perjalanan > 100 km</div>
+      </div>
+      <div class="cl-body">
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Tekanan ban</b> — Cek dan sesuaikan. Kempis = boros BBM + ban cepat rusak</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Level oli mesin</b> — Cek sight glass / dipstick. Di bawah batas bawah = bahaya</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Rem depan & belakang</b> — Test di tempat aman. Pastikan responsif, tidak oblak</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Rantai (motor sport)</b> — Kekencangan 20–30mm, sudah dilumasi</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Lampu depan, belakang, sein</b> — Semua harus berfungsi untuk perjalanan malam</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Kondisi ban visual</b> — Tidak ada tonjolan, retak, atau benda menancap</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Aki</b> — Starter normal. Aki lemah = mogok di jalan sepi</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Klakson</b> — Wajib berfungsi untuk keselamatan di jalan</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Minyak rem (CBS/ABS)</b> — Cek level di reservoir kecil di dekat tuas rem</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Kondisi mesin saat idle</b> — Nyalakan 5 menit. Tidak ada suara aneh, getaran normal</div></div>
+      </div>
+    </div>
+
+    <div class="cl-card">
+      <div class="cl-head">
+        <div class="cl-head-title">🚗 Checklist Mobil — Perjalanan Jauh</div>
+        <div class="cl-head-sub">Wajib diperiksa sebelum perjalanan > 200 km atau mudik</div>
+      </div>
+      <div class="cl-body">
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Tekanan 5 ban + serep</b> — Cek stiker di pintu pengemudi untuk tekanan yang benar</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Level oli mesin</b> — Cek dipstick saat mesin dingin, antara MIN–MAX</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Air coolant/radiator</b> — Cek reservoir, bukan tutup radiator! Level LOW–FULL</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Minyak rem</b> — Level di reservoir. Turun drastis = kampas aus atau bocor</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Air wiper</b> — Isi penuh. Hujan tanpa air wiper = bahaya</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Semua lampu</b> — Depan, belakang, rem, sein, hazard. Minta bantuan orang lain cek</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Aki & kelistrikan</b> — AC, radio, power window normal = aki baik</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Rem parkir / handbrake</b> — Pastikan mengunci kuat sebelum berangkat</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Ban serep + dongkrak + kunci roda</b> — Wajib ada dan siap pakai</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Tidak ada lampu MIL menyala</b> — Check Engine menyala = ada masalah, periksa dulu</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Kondisi wiper</b> — Tes di kaca basah. Bergaris = ganti karet wiper dulu</div></div>
+        <div class="cl-item"><div class="cl-check">✓</div><div><b>Tidak ada suara aneh saat test drive</b> — Bunyi berdecit, gemuruh, atau ketukan = periksa segera</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box ib-teal mt-4">
+    <div class="ib-icon">🌧️</div>
+    <div class="ib-body">
+      <strong>Perawatan Khusus Musim Hujan Indonesia (Oktober–Maret)</strong>
+      <p>
+        <b>1. Wiper</b> — Ganti karet wiper sebelum musim hujan. Test dulu: nyalakan dan semprot air.<br/>
+        <b>2. Ban</b> — Alur ban harus > 3mm untuk aquaplaning resistance yang baik. Tekanan ban jangan terlalu keras saat hujan.<br/>
+        <b>3. Bawah kolong</b> — Cuci bawah mobil setelah hujan/banjir. Lumpur yang menempel mempercepat karat pada rangka, per, dan sasis.<br/>
+        <b>4. Rem</b> — Rem setelah lewat genangan air. Air di disc rotor = rem tidak pakem sesaat.<br/>
+        <b>5. Oli dan filter</b> — Kondisi macet + hujan = mesin lebih berat. Percepat interval ganti oli 10–20%.
+      </p>
+    </div>
+  </div>
+
+  <div class="sec-hdr mt-4">
+    <h2 style="font-size:16px">🔍 Mengenali Gejala Kerusakan Kendaraan</h2>
+    <p>Deteksi dini = biaya perbaikan jauh lebih murah. Jangan abaikan gejala berikut ini!</p>
+  </div>
+
+  <div class="symptom-grid">
+    <div class="sym-card">
+      <div class="sym-head">
+        <span class="sym-icon">💨</span>
+        <div class="sym-title">Asap dari Knalpot</div>
+        <span class="sym-sev sev-kritis">KRITIS</span>
+      </div>
+      <div class="sym-body">
+        <div class="sym-row"><b>Asap BIRU</b> — Oli terbakar di ruang bakar. Penyebab: ring piston aus, seal klep bocor. Biaya: Rp 2–15 juta</div>
+        <div class="sym-row"><b>Asap HITAM TEBAL</b> — Campuran terlalu kaya (terlalu banyak BBM). Penyebab: injektor bocor, filter udara mampet, sensor O2 rusak</div>
+        <div class="sym-row"><b>Asap PUTIH TEBAL</b> — Coolant masuk ruang bakar. Penyebab: head gasket bocor. Darurat! Segera ke bengkel, jangan paksa jalan</div>
+        <div class="sym-row"><b>Asap putih tipis</b> saat start dingin — Normal, uap air kondensasi dalam knalpot. Tidak perlu khawatir</div>
+      </div>
+    </div>
+
+    <div class="sym-card">
+      <div class="sym-head">
+        <span class="sym-icon">🔊</span>
+        <div class="sym-title">Suara Abnormal dari Mesin</div>
+        <span class="sym-sev sev-kritis">KRITIS</span>
+      </div>
+      <div class="sym-body">
+        <div class="sym-row"><b>Ketukan keras "TOK-TOK"</b> dari dalam mesin — Piston knocking atau bearing kruk as aus. Matikan mesin, segera ke bengkel!</div>
+        <div class="sym-row"><b>Suara "KLETEK-KLETEK"</b> di atas — Klep aus, penyetel klep longgar, atau rantai keteng molor</div>
+        <div class="sym-row"><b>Deru seperti turbin</b> — Bearing alternator atau AC kompressor mulai aus</div>
+        <div class="sym-row"><b>Siulan/decit saat mesin panas</b> — V-belt mulai slip, ganti segera sebelum putus</div>
+      </div>
+    </div>
+
+    <div class="sym-card">
+      <div class="sym-head">
+        <span class="sym-icon">🚗</span>
+        <div class="sym-title">Suara Abnormal saat Jalan</div>
+        <span class="sym-sev sev-penting">PENTING</span>
+      </div>
+      <div class="sym-body">
+        <div class="sym-row"><b>Gemuruh dari roda kecepatan tertentu</b> — Bearing roda aus. Makin cepat makin keras = bahaya</div>
+        <div class="sym-row"><b>Klik-klik saat belok</b> — CV joint aus. Biarkan = CV joint patah, roda bisa copot!</div>
+        <div class="sym-row"><b>Decit saat injak rem</b> — Kampas rem habis, wear indicator bergesekan dengan disc</div>
+        <div class="sym-row"><b>Bunyi "DUNG" saat lewat lubang</b> — Bushing arm, ball joint, atau tierod longgar</div>
+        <div class="sym-row"><b>Getaran setir di kecepatan 80–100 km/h</b> — Ban tidak balance atau pelek bengkok</div>
+      </div>
+    </div>
+
+    <div class="sym-card">
+      <div class="sym-head">
+        <span class="sym-icon">⚡</span>
+        <div class="sym-title">Lampu Indikator Menyala</div>
+        <span class="sym-sev sev-kritis">KRITIS</span>
+      </div>
+      <div class="sym-body">
+        <div class="sym-row"><b>🔴 Lampu OLI (oil can)</b> — Tekanan oli drop! MATIKAN MESIN SEGERA. Jalan terus = mesin rusak total dalam menit</div>
+        <div class="sym-row"><b>🌡️ Lampu SUHU / Temperature</b> — Mesin overheat! Pinggirkan mobil, matikan mesin. Jangan paksa jalan</div>
+        <div class="sym-row"><b>🔋 Lampu BATERAI</b> — Alternator tidak mengisi atau aki bermasalah. Segera ke bengkel sebelum mogok</div>
+        <div class="sym-row"><b>🔧 Check Engine / MIL</b> — Ada error sensor. Baca kode OBD2 dengan scanner. Bisa serius atau tidak serius</div>
+        <div class="sym-row"><b>ABS / Traction Control</b> — Sensor roda bermasalah atau ada kebocoran minyak rem</div>
+      </div>
+    </div>
+
+    <div class="sym-card">
+      <div class="sym-head">
+        <span class="sym-icon">💧</span>
+        <div class="sym-title">Kebocoran Cairan</div>
+        <span class="sym-sev sev-penting">PENTING</span>
+      </div>
+      <div class="sym-body">
+        <div class="sym-row"><b>Tetesan HITAM/COKLAT</b> di bawah mobil — Oli mesin atau oli transmisi bocor. Cek gasket dan seal</div>
+        <div class="sym-row"><b>Tetesan HIJAU/MERAH/KUNING</b> — Coolant bocor. Bisa dari selang, water pump, atau radiator</div>
+        <div class="sym-row"><b>Tetesan BENING/MINYAK di roda</b> — Minyak rem bocor! DARURAT — jangan dikendarai sebelum diperbaiki</div>
+        <div class="sym-row"><b>Tetesan bening di bawah AC</b> — Normal, itu air kondensasi dari evaporator AC. Tidak perlu khawatir</div>
+      </div>
+    </div>
+
+    <div class="sym-card">
+      <div class="sym-head">
+        <span class="sym-icon">⛽</span>
+        <div class="sym-title">Konsumsi BBM Boros Tiba-tiba</div>
+        <span class="sym-sev sev-info">INFO</span>
+      </div>
+      <div class="sym-body">
+        <div class="sym-row"><b>Filter udara kotor</b> — Mesin kekurangan udara, pembakaran tidak efisien</div>
+        <div class="sym-row"><b>Busi aus</b> — Percikan api lemah, bensin tidak terbakar sempurna</div>
+        <div class="sym-row"><b>Sensor O2 / MAF rusak</b> — ECU salah hitung campuran BBM-udara</div>
+        <div class="sym-row"><b>Tekanan ban kurang</b> — Setiap 10 psi kurang = konsumsi BBM naik 1–2%</div>
+        <div class="sym-row"><b>Kampas rem menyangkut (drag)</b> — Mobil seperti "ditahan", rem panas setelah jalan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .wrap -->
+
+<script>
+function tab(btn, id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
